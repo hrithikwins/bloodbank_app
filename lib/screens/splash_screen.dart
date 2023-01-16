@@ -10,7 +10,7 @@ class MyHomePage extends StatelessWidget {
     return Scaffold(
       body: Center(
         child: Container(
-          child: Text("Hello wrold"),
+          child: Text("Hello world"),
         ),
       ),
     );
