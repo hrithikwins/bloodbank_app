@@ -7,10 +7,33 @@ class MyHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Center(
-          child: Image.asset(
-            "assets/bloodbank.png",
-          ),
+        child: Row(
+          children: [
+            Container(
+              width: 80,
+              height: double.infinity,
+              color: Colors.red,
+              child: Text(
+                "I am red",
+              ),
+            ),
+            Container(
+              width: 80,
+              height: double.infinity,
+              color: Colors.blue,
+              child: Text(
+                "I am blue",
+              ),
+            ),
+            Container(
+              width: 80,
+              height: double.infinity,
+              color: Colors.green,
+              child: Text(
+                "I am green",
+              ),
+            ),
+          ],
         ),
       ),
     );
