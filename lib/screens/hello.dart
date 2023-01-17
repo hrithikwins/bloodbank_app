@@ -7,12 +7,13 @@ class MyHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Center(
-          child: Image.asset(
-            "assets/bloodbank.png",
-          ),
-        ),
-      ),
+          child: Column(
+        children: [
+          Container(
+            child: ,
+          )
+        ],
+      )),
     );
   }
 }
