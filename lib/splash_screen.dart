@@ -9,7 +9,10 @@ class MyWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         body: SafeArea(
-      child: Container(),
+      child: Center(
+          child: Image.asset(
+        "images/BB1.png",
+      )),
     ));
   }
 }
