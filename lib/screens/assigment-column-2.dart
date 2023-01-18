@@ -18,6 +18,9 @@ class MyHomePage extends StatelessWidget {
                 horizontal: 20,
                 vertical: 10,
               ),
+              padding: EdgeInsets.symmetric(
+                horizontal: 20,
+              ),
               decoration: BoxDecoration(
                 color: Colors.teal.shade400,
                 borderRadius: BorderRadius.all(
@@ -25,19 +28,78 @@ class MyHomePage extends StatelessWidget {
                     20,
                   ),
                 ),
+                border: Border.all(
+                  width: 1,
+                  color: Colors.yellow,
+                ),
               ),
               height: 80,
               width: double.infinity,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Container(
+                        child: Text("28/01/2023 "),
+                      ),
+                      Container(
+                        child: Text("Monday"),
+                      ),
+                    ],
+                  ),
+                  Container(
+                    child: Text("Fetching milk "),
+                  )
+                ],
+              ),
             ),
             Container(
               margin: EdgeInsets.symmetric(
                 horizontal: 20,
                 vertical: 10,
               ),
-              color: Colors.teal.shade400,
+              padding: EdgeInsets.symmetric(
+                horizontal: 20,
+              ),
+              decoration: BoxDecoration(
+                color: Colors.teal.shade400,
+                borderRadius: BorderRadius.all(
+                  Radius.circular(
+                    20,
+                  ),
+                ),
+                border: Border.all(
+                  width: 1,
+                  color: Colors.yellow,
+                ),
+              ),
               height: 80,
               width: double.infinity,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Container(
+                        child: Text("28/01/2023 "),
+                      ),
+                      Container(
+                        child: Text("Monday"),
+                      ),
+                    ],
+                  ),
+                  Container(
+                    child: Text("Fetching milk "),
+                  )
+                ],
+              ),
             ),
+
             Container(
               margin: EdgeInsets.symmetric(
                 horizontal: 20,
