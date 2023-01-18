@@ -22,7 +22,8 @@ class MyHomePage extends StatelessWidget {
                   ),
                 ),
                 Stack(
-                  // alignment: Alignment.center,
+                  clipBehavior: Clip.none,
+                  alignment: Alignment.center,
                   // fit: StackFit.loose,
                   // mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -30,7 +31,7 @@ class MyHomePage extends StatelessWidget {
                       padding: EdgeInsets.only(
                         left: 6,
                         top: 6,
-                        right: 28,
+                        right: 22,
                         bottom: 6,
                       ),
                       decoration: BoxDecoration(
@@ -52,13 +53,14 @@ class MyHomePage extends StatelessWidget {
                       right: -10,
                       child: Container(
                         decoration: BoxDecoration(
+                          color: Colors.white,
                           border: Border.all(
                             width: 0.8,
                             color: Colors.blueGrey,
                           ),
                           borderRadius: BorderRadius.all(
                             Radius.circular(
-                              10,
+                              8,
                             ),
                           ),
                         ),
