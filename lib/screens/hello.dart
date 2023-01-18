@@ -11,9 +11,11 @@ class MyHomePage extends StatelessWidget {
           children: [
             //the enter number field
             Container(
+              color: Colors.red.shade100,
               child: Column(
                 children: [
                   Container(
+                    color: Colors.green.shade100,
                     child: Text(
                       "Enter your mobile number",
                     ),
@@ -30,7 +32,7 @@ class MyHomePage extends StatelessWidget {
                           ),
                         )),
                     child: Text(
-                      "Enter your mobile number",
+                      "+91",
                     ),
                   ),
                 ],
