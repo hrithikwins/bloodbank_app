@@ -16,21 +16,55 @@ class MyHomePage extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Container(
+                  margin: EdgeInsets.all(8),
                   child: Text(
                     "Login with your mobile",
                   ),
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
+                Stack(
+                  // alignment: Alignment.center,
+                  // fit: StackFit.loose,
+                  // mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Container(
+                      padding: EdgeInsets.only(
+                        left: 6,
+                        top: 6,
+                        right: 28,
+                        bottom: 6,
+                      ),
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                          width: 0.8,
+                          color: Colors.blueGrey,
+                        ),
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(
+                            10,
+                          ),
+                        ),
+                      ),
                       child: Text(
                         "94999999",
                       ),
                     ),
-                    Container(
-                      child: Icon(
-                        Icons.check,
+                    Positioned(
+                      right: -10,
+                      child: Container(
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                            width: 0.8,
+                            color: Colors.blueGrey,
+                          ),
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(
+                              10,
+                            ),
+                          ),
+                        ),
+                        child: Icon(
+                          Icons.check,
+                        ),
                       ),
                     ),
                   ],
