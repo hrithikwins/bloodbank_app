@@ -12,28 +12,29 @@ class MyHomePage extends StatelessWidget {
       body: SafeArea(
         child: Container(
           color: Colors.red,
-          child: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Image.asset(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Container(
+                child: Image.asset(
                   "assets/health-check.png",
                 ),
-                Container(
-                  padding: EdgeInsets.only(
-                    left: 57.0,
-                    right: 56.0,
+              ),
+              Container(
+                padding: EdgeInsets.only(
+                  left: 57.0,
+                  right: 56.0,
+                ),
+                child: Text(
+                  "To be a responsible donor, you must get a check-up",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontSize: 18,
+                    color: Colors.white,
                   ),
-                  child: Text(
-                    "To be a responsible donor, you must get a check-up",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 18,
-                    ),
-                  ),
-                )
-              ],
-            ),
+                ),
+              )
+            ],
           ),
         ),
       ),
