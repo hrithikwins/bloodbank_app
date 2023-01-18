@@ -12,6 +12,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: ThemeData(
+        primarySwatch: Colors.amber,
+      ),
       title: 'Bllood Bank App',
       home: const MyHomePage(),
     );
