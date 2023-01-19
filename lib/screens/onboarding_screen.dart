@@ -14,7 +14,10 @@ class MyOnboardingPage extends StatelessWidget {
             // mainAxisAlignment: MainAxisAlignment.center,
             children: onboardingData
                 .map(
-                  (e) => onboardingWidget(),
+                  (onboardingSingleData) => onboardingWidget(
+                    onboardingSingleData["text"]!,
+                    imageUrl: onboardingSingleData["image_url"],
+                  ),
                 )
                 .toList(),
           ),
@@ -23,13 +26,16 @@ class MyOnboardingPage extends StatelessWidget {
     );
   }
 
-  Column onboardingWidget() {
+  Widget onboardingWidget(
+    String text, {
+    String? imageUrl,
+  }) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
         Container(
           child: Image.asset(
-            "assets/health-check.png",
+            imageUrl!,
           ),
         ),
         Container(
@@ -38,7 +44,7 @@ class MyOnboardingPage extends StatelessWidget {
             right: 56.0,
           ),
           child: Text(
-            "To be a responsible donor, you must get a check-up",
+            text,
             textAlign: TextAlign.center,
             style: TextStyle(
               fontSize: 18,
