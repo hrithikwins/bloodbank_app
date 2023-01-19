@@ -11,16 +11,18 @@ class MyOnboardingPage extends StatelessWidget {
         child: Container(
           color: Colors.red,
           width: double.infinity,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: onboardingData
-                .map(
-                  (singleOnboardingScreen) => onboardingWidget(
-                    imageUrl: singleOnboardingScreen["image_url"]!,
-                    text: singleOnboardingScreen["text"]!,
-                  ),
-                )
-                .toList(),
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: onboardingData
+                  .map(
+                    (singleOnboardingScreen) => onboardingWidget(
+                      imageUrl: singleOnboardingScreen["image_url"]!,
+                      text: singleOnboardingScreen["text"]!,
+                    ),
+                  )
+                  .toList(),
+            ),
           ),
         ),
       ),
