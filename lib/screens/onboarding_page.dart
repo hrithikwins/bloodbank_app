@@ -1,7 +1,8 @@
 // ignore_for_file: prefer_const_constructors
 
-import 'package:bloodbank_app/screens/splash_screen.dart';
+// import 'package:bloodbank_app/screens/splash_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:bloodbank_app/constants/onboarding_data.dart';
 
 class SplashScreen extends StatelessWidget {
   const SplashScreen({super.key});
@@ -12,20 +13,32 @@ class SplashScreen extends StatelessWidget {
       body: SafeArea(
           child: Container(
         color: Colors.red[400],
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Image(image: AssetImage('assets/health-check.png')),
-            Container(
-              padding: EdgeInsets.only(left: 57, right: 56),
-              child: Text(
-                "To be responsible donor you must check your blood group.",
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                    fontSize: 22, color: Colors.white70, fontFamily: 'Kalam'),
-              ),
-            )
-          ],
+        child: SingleChildScrollView(
+          child: Column(
+            children: onboardingData.map(
+              (onboardingSingleData) {
+                return Column(
+                  children: [
+                    Container(
+                        padding: EdgeInsets.all(50),
+                        margin: EdgeInsets.all(50),
+                        child: Image.asset(onboardingSingleData["image_url"]!)),
+                    Container(
+                      padding: EdgeInsets.only(left: 57, right: 56, bottom: 50),
+                      child: Text(
+                        onboardingSingleData['text']!,
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            fontSize: 22,
+                            color: Colors.white70,
+                            fontFamily: 'Kalam'),
+                      ),
+                    )
+                  ],
+                );
+              },
+            ).toList(),
+          ),
         ),
       )),
     );
