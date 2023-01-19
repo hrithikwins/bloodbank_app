@@ -1,4 +1,4 @@
-import 'package:bloodbank_app/screens/hello.dart';
+import 'package:bloodbank_app/screens/onboarding1.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -12,6 +12,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: ThemeData(
+        primarySwatch: Colors.amber,
+      ),
       title: 'Bllood Bank App',
       home: const MyHomePage(),
     );
