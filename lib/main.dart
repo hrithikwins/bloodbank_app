@@ -1,4 +1,4 @@
-import 'package:bloodbank_app/screens/hello.dart';
+import 'package:bloodbank_app/screens/splash_screen.dart';
 import 'package:flutter/material.dart';
 
 import 'screens/splash_screen.dart';
