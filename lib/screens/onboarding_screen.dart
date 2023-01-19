@@ -10,8 +10,8 @@ class MyOnboardingPage extends StatelessWidget {
       body: SafeArea(
         child: Container(
           color: Colors.red,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+          child: ListView(
+            // mainAxisAlignment: MainAxisAlignment.center,
             children: onboardingData
                 .map(
                   (e) => onboardingWidget(),
