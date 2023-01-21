@@ -1,19 +1,30 @@
 import 'package:flutter/material.dart';
 
-class BloodCounterScreen extends StatelessWidget {
+class BloodCounterScreen extends StatefulWidget {
   const BloodCounterScreen({super.key});
+
+  @override
+  State<BloodCounterScreen> createState() => _BloodCounterScreenState();
+}
+
+class _BloodCounterScreenState extends State<BloodCounterScreen> {
+  int counter = 0;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
         child: Container(
+          padding: EdgeInsets.all(8.0),
           child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               bloodBankDetails(context),
               SizedBox(
                 height: 150,
                 child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     bloodDetails(),
                     bloodCounter(),
@@ -27,7 +38,41 @@ class BloodCounterScreen extends StatelessWidget {
     );
   }
 
-  Text bloodCounter() => Text("Counter part");
+  Widget bloodCounter() => Row(
+        children: [
+          if (counter > 0)
+            IconButton(
+              onPressed: () => {
+                setState(() {
+                  counter--;
+                })
+              },
+              icon: Icon(
+                Icons.remove,
+              ),
+            ),
+          Container(
+            padding: EdgeInsets.all(20.0),
+            child: Text(counter.toString()),
+          ),
+          SizedBox(
+            height: 40,
+            width: 40,
+            child: counter < 9
+                ? IconButton(
+                    onPressed: () {
+                      setState(() {
+                        counter++;
+                      });
+                    },
+                    icon: Icon(
+                      Icons.add,
+                    ),
+                  )
+                : Container(),
+          )
+        ],
+      );
 
   Text bloodDetails() => Text("B+ve");
 
