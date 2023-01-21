@@ -10,19 +10,46 @@ class BloodCounterScreen extends StatelessWidget {
         child: Container(
           child: Row(
             children: [
-              Container(
+              bloodBankDetails(context),
+              SizedBox(
                 height: 150,
-                width: MediaQuery.of(context).size.width * 0.48,
-                decoration: BoxDecoration(
-                  color: Colors.grey.shade600,
-                  borderRadius: BorderRadius.all(
-                    Radius.circular(
-                      10,
-                    ),
-                  ),
+                child: Column(
+                  children: [
+                    bloodDetails(),
+                    bloodCounter(),
+                  ],
                 ),
               )
             ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Text bloodCounter() => Text("Counter part");
+
+  Text bloodDetails() => Text("B+ve");
+
+  Container bloodBankDetails(BuildContext context) {
+    return Container(
+      height: 150,
+      width: MediaQuery.of(context).size.width * 0.48,
+      decoration: BoxDecoration(
+        color: Colors.grey.shade600,
+        borderRadius: BorderRadius.all(
+          Radius.circular(
+            10,
+          ),
+        ),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.all(18.0),
+        child: Text(
+          "Sarita\nBlood\nBank",
+          style: TextStyle(
+            fontSize: 28,
+            color: Colors.white,
           ),
         ),
       ),
