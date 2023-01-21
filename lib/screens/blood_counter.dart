@@ -16,21 +16,42 @@ class _BloodCounterScreenState extends State<BloodCounterScreen> {
       body: SafeArea(
         child: Container(
           padding: EdgeInsets.all(8.0),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.center,
+          child: Column(
             children: [
-              bloodBankDetails(context),
-              SizedBox(
-                height: 150,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    bloodDetails(),
-                    bloodCounter(),
-                  ],
-                ),
-              )
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  bloodBankDetails(context),
+                  SizedBox(
+                    height: 150,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        bloodDetails(),
+                        bloodCounter(),
+                      ],
+                    ),
+                  )
+                ],
+              ),
+              if (counter == 9)
+                Container(
+                  width: double.infinity,
+                  padding: EdgeInsets.all(
+                    20,
+                  ),
+                  decoration: BoxDecoration(
+                    color: Colors.redAccent,
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  child: Text(
+                    "You have reached max capacity",
+                    style: TextStyle(
+                      color: Colors.white,
+                    ),
+                  ),
+                )
             ],
           ),
         ),
@@ -40,17 +61,22 @@ class _BloodCounterScreenState extends State<BloodCounterScreen> {
 
   Widget bloodCounter() => Row(
         children: [
-          if (counter > 0)
-            IconButton(
-              onPressed: () => {
-                setState(() {
-                  counter--;
-                })
-              },
-              icon: Icon(
-                Icons.remove,
-              ),
-            ),
+          SizedBox(
+            height: 40,
+            width: 40,
+            child: counter > 0
+                ? IconButton(
+                    onPressed: () => {
+                      setState(() {
+                        counter--;
+                      })
+                    },
+                    icon: Icon(
+                      Icons.remove,
+                    ),
+                  )
+                : Container(),
+          ),
           Container(
             padding: EdgeInsets.all(20.0),
             child: Text(counter.toString()),
