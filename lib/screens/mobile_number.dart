@@ -3,8 +3,8 @@ import 'dart:ui';
 import 'package:bloodbank_app/constants/colors.dart';
 import 'package:flutter/material.dart';
 
-class MobileNumber extends StatelessWidget {
-  const MobileNumber({super.key});
+class PhoneNumberScreen extends StatelessWidget {
+  const PhoneNumberScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
