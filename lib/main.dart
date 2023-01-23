@@ -16,13 +16,8 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-<<<<<<< HEAD
-    return const MaterialApp(
-      home: MobileNumber(),
-=======
     return MaterialApp(
       home: MySplashScreen(),
->>>>>>> 44c03591375f871a446f2749f92dbc13a58f11e9
     );
   }
 }
