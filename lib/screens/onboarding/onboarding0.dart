@@ -1,3 +1,4 @@
+import 'package:bloodbank_app/screens/onboarding/onboarding1.dart';
 import 'package:flutter/material.dart';
 
 import '../../constants/onboarding_data.dart';
@@ -10,8 +11,12 @@ class MyOnboardingPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: GestureDetector(
+        child: InkWell(
           onTap: () => {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => MyOnboardingPage1()),
+            ),
             // navigation code here
           },
           // InkWell, GestureDetector, InkResponse

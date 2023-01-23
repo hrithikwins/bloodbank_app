@@ -25,29 +25,6 @@ class MobileNumber extends StatelessWidget {
                     child: Text(
                       "Enter your mobile number",
                     ),
-<<<<<<< HEAD
-                    Container(
-                      width: 265,
-                      margin: EdgeInsets.only(
-                        top: 15,
-                      ),
-                      padding: EdgeInsets.fromLTRB(60, 14, 60, 17),
-                      decoration: BoxDecoration(
-                        border: Border.all(
-                          width: 0.8,
-                        ),
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(
-                            20,
-                          ),
-                        ),
-                      ),
-                      child: Text(
-                        "+91",
-                        style: TextStyle(
-                          fontSize: 18,
-                          color: MyColors.redPrimary,
-=======
                   ),
                   Container(
                     width: 265,
@@ -58,7 +35,6 @@ class MobileNumber extends StatelessWidget {
                     decoration: BoxDecoration(
                         border: Border.all(
                           width: 0.8,
->>>>>>> bfec6bc3040a8f4f780462438e929e5ece0d4e95
                         ),
                         borderRadius: BorderRadius.all(
                           Radius.circular(
@@ -77,13 +53,8 @@ class MobileNumber extends StatelessWidget {
               ),
 
               // add some spacing
-<<<<<<< HEAD
               SizedBox(
                 height: 50,
-=======
-              const SizedBox(
-                height: 67,
->>>>>>> bfec6bc3040a8f4f780462438e929e5ece0d4e95
               ),
               Container(
                 height: 53,
