@@ -1,4 +1,6 @@
+import 'package:bloodbank_app/screens/onboarding/onboarding0.dart';
 import 'package:bloodbank_app/screens/onboarding_screen.dart';
+import 'package:bloodbank_app/widgets/onboarding_widget.dart';
 import 'package:flutter/material.dart';
 
 class SplashScreen extends StatelessWidget {
@@ -13,7 +15,7 @@ class SplashScreen extends StatelessWidget {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => MyOnboardingPage(),
+                builder: (context) => OnboardingPage(),
               ),
             )
           },
