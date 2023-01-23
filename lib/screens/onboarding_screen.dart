@@ -8,18 +8,23 @@ class MyOnboardingPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Container(
-          color: Colors.red,
-          child: ListView(
-            // mainAxisAlignment: MainAxisAlignment.center,
-            children: onboardingData
-                .map(
-                  (onboardingSingleData) => onboardingWidget(
-                    onboardingSingleData["text"]!,
-                    imageUrl: onboardingSingleData["image_url"],
-                  ),
-                )
-                .toList(),
+        child: InkWell(
+          onTap: () => {
+            Navigator.pop(context),
+          },
+          child: Container(
+            color: Colors.red,
+            child: ListView(
+              // mainAxisAlignment: MainAxisAlignment.center,
+              children: onboardingData
+                  .map(
+                    (onboardingSingleData) => onboardingWidget(
+                      onboardingSingleData["text"]!,
+                      imageUrl: onboardingSingleData["image_url"],
+                    ),
+                  )
+                  .toList(),
+            ),
           ),
         ),
       ),
