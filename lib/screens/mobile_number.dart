@@ -24,28 +24,9 @@ class PhoneNumberScreen extends StatelessWidget {
                       "Enter your mobile number",
                     ),
                   ),
-                  Container(
+                  SizedBox(
                     width: 265,
-                    margin: EdgeInsets.only(
-                      top: 15,
-                    ),
-                    padding: EdgeInsets.fromLTRB(60, 14, 60, 17),
-                    decoration: BoxDecoration(
-                        border: Border.all(
-                          width: 0.8,
-                        ),
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(
-                            20,
-                          ),
-                        )),
-                    child: Text(
-                      "+91",
-                      style: TextStyle(
-                        fontSize: 18,
-                        color: MyColors.redPrimary,
-                      ),
-                    ),
+                    child: TextField(),
                   ),
                 ],
               ),
