@@ -12,12 +12,13 @@ class SplashScreen extends StatelessWidget {
       body: SafeArea(
         child: InkWell(
           onTap: () => {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => OnboardingPage(),
-              ),
-            )
+            Navigator.pushNamed(context, '/onboarding'),
+            // Navigator.push(
+            //   context,
+            //   MaterialPageRoute(
+            //     builder: (context) => OnboardingPage(),
+            //   ),
+            // )
           },
           child: Center(
             child: Image.asset(
