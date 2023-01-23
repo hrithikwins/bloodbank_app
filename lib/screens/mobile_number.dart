@@ -10,50 +10,48 @@ class MobileNumber extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Container(
+        child: SizedBox(
           width: double.infinity,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             // crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               //the enter number field
-              Container(
-                child: Column(
-                  children: [
-                    Container(
-                      child: Text(
-                        "Enter your mobile number",
-                      ),
+              Column(
+                children: [
+                  Container(
+                    child: Text(
+                      "Enter your mobile number",
                     ),
-                    Container(
-                      width: 265,
-                      margin: EdgeInsets.only(
-                        top: 15,
-                      ),
-                      padding: EdgeInsets.fromLTRB(60, 14, 60, 17),
-                      decoration: BoxDecoration(
-                          border: Border.all(
-                            width: 0.8,
-                          ),
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(
-                              20,
-                            ),
-                          )),
-                      child: Text(
-                        "+91",
-                        style: TextStyle(
-                          fontSize: 18,
-                          color: MyColors.redPrimary,
+                  ),
+                  Container(
+                    width: 265,
+                    margin: EdgeInsets.only(
+                      top: 15,
+                    ),
+                    padding: EdgeInsets.fromLTRB(60, 14, 60, 17),
+                    decoration: BoxDecoration(
+                        border: Border.all(
+                          width: 0.8,
                         ),
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(
+                            20,
+                          ),
+                        )),
+                    child: Text(
+                      "+91",
+                      style: TextStyle(
+                        fontSize: 18,
+                        color: MyColors.redPrimary,
                       ),
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
 
               // add some spacing
-              SizedBox(
+              const SizedBox(
                 height: 67,
               ),
               Container(
@@ -63,7 +61,7 @@ class MobileNumber extends StatelessWidget {
                   color: MyColors.redPrimary,
                   borderRadius: BorderRadius.circular(4),
                 ),
-                child: Center(
+                child: const Center(
                   child: Text(
                     "Login",
                     style: TextStyle(
