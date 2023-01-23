@@ -1,4 +1,5 @@
 import 'package:bloodbank_app/constants/onboarding_data.dart';
+import 'package:bloodbank_app/screens/mobile_number.dart';
 import 'package:bloodbank_app/screens/onboarding/onboarding2.dart';
 import 'package:flutter/material.dart';
 
@@ -13,7 +14,10 @@ class OnboardingPage2 extends StatelessWidget {
       body: SafeArea(
         child: InkWell(
           onTap: () => {
-            Navigator.pop(context),
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => MobileNumber()),
+            )
           },
           child: Container(
             width: double.infinity,
