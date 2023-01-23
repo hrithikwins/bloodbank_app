@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'dart:ui';
 
 import 'package:bloodbank_app/constants/colors.dart';
@@ -32,14 +34,15 @@ class MobileNumber extends StatelessWidget {
                       ),
                       padding: EdgeInsets.fromLTRB(60, 14, 60, 17),
                       decoration: BoxDecoration(
-                          border: Border.all(
-                            width: 0.8,
+                        border: Border.all(
+                          width: 0.8,
+                        ),
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(
+                            20,
                           ),
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(
-                              20,
-                            ),
-                          )),
+                        ),
+                      ),
                       child: Text(
                         "+91",
                         style: TextStyle(
@@ -54,7 +57,7 @@ class MobileNumber extends StatelessWidget {
 
               // add some spacing
               SizedBox(
-                height: 67,
+                height: 50,
               ),
               Container(
                 height: 53,
