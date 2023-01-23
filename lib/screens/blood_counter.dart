@@ -15,32 +15,39 @@ class _BloodCounterScreenState extends State<BloodCounterScreen> {
     return Scaffold(
       body: SafeArea(
         child: Container(
-          padding: EdgeInsets.all(8.0),
+          padding: EdgeInsets.all(
+            MediaQuery.of(context).size.width * 0.04,
+          ),
           child: Column(
             children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  bloodBankDetails(context),
-                  SizedBox(
-                    height: 150,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        bloodDetails(),
-                        bloodCounter(),
-                      ],
-                    ),
-                  )
-                ],
+              SizedBox(
+                width: MediaQuery.of(context).size.width,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    bloodBankDetails(context),
+                    SizedBox(
+                      height: 150,
+                      width: MediaQuery.of(context).size.width * 0.48,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          bloodDetails(),
+                          bloodCounter(),
+                        ],
+                      ),
+                    )
+                  ],
+                ),
               ),
               if (counter == 9)
                 Container(
                   width: double.infinity,
-                  padding: EdgeInsets.all(
-                    20,
-                  ),
+                  // padding: EdgeInsets.all(
+                  //   20,
+                  // ),
                   decoration: BoxDecoration(
                     color: Colors.redAccent,
                     borderRadius: BorderRadius.circular(20),
@@ -117,7 +124,7 @@ class _BloodCounterScreenState extends State<BloodCounterScreen> {
       child: Padding(
         padding: const EdgeInsets.all(18.0),
         child: Text(
-          "Sarita\nBlood\nBank",
+          "Sarita Blood Bank",
           style: TextStyle(
             fontSize: 28,
             color: Colors.white,
