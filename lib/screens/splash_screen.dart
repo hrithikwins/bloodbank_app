@@ -32,10 +32,7 @@ class _MySplashScreenState extends State<MySplashScreen> {
         child: InkWell(
           onTap: () => {
             // navigation code here
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => MyOnboardingPage()),
-            )
+            Navigator.pushNamed(context, "/onboarding")
           },
           child: Center(
             child: Image.asset(

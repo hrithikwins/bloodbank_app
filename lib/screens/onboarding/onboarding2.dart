@@ -5,8 +5,8 @@ import 'package:flutter/material.dart';
 
 import '../../widgets/onboarding_widget.dart';
 
-class MyOnboardingPage2 extends StatelessWidget {
-  const MyOnboardingPage2({super.key});
+class OnboardingScreen2 extends StatelessWidget {
+  const OnboardingScreen2({super.key});
 
   @override
   Widget build(BuildContext context) {

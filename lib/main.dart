@@ -1,5 +1,7 @@
 import 'package:bloodbank_app/screens/mobile_number.dart';
 import 'package:bloodbank_app/screens/onboarding/onboarding0.dart';
+import 'package:bloodbank_app/screens/onboarding/onboarding1.dart';
+import 'package:bloodbank_app/screens/onboarding/onboarding2.dart';
 import 'package:bloodbank_app/screens/onboarding_screen.dart';
 import 'package:bloodbank_app/screens/splash_screen.dart';
 import 'package:flutter/material.dart';
@@ -16,7 +18,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: MySplashScreen(),
+      // home: MySplashScreen(),
+      initialRoute: '/',
+      routes: {
+        '/': (context) => MySplashScreen(),
+        '/onboarding': (context) => OnboardingScreen(),
+        '/onboarding1': (context) => OnboardingScreen1(),
+        '/onboarding2': (context) => OnboardingScreen2(),
+      },
     );
   }
 }
