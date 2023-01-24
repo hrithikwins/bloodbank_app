@@ -1,22 +1,26 @@
 import 'package:flutter/material.dart';
 
 Widget onboardingWidget(
-    {required String imageUrl, String text = "", int? index}) {
+  String text, {
+  String? imageUrl,
+}) {
   return Column(
     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
     children: [
-      Image.asset(
-        imageUrl,
+      Container(
+        child: Image.asset(
+          imageUrl!,
+        ),
       ),
       Container(
-        padding: const EdgeInsets.only(
+        padding: EdgeInsets.only(
           left: 57.0,
           right: 56.0,
         ),
         child: Text(
           text,
           textAlign: TextAlign.center,
-          style: const TextStyle(
+          style: TextStyle(
             fontSize: 18,
             color: Colors.white,
           ),

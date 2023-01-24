@@ -5,12 +5,25 @@ import 'dart:ui';
 import 'package:bloodbank_app/constants/colors.dart';
 import 'package:flutter/material.dart';
 
-class PhoneNumberScreen extends StatelessWidget {
-  const PhoneNumberScreen({super.key});
+class MobileNumber extends StatelessWidget {
+  const MobileNumber({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: FloatingActionButton.extended(
+        icon: Icon(Icons.remove),
+        label: Text('Hello'),
+
+        onPressed: () => null,
+        // child: Column(
+        //   children: [
+        //     Icon(Icons.remove),
+        //     Icon(Icons.remove),
+        //     Icon(Icons.remove),
+        //   ],
+        // ),
+      ),
       body: SafeArea(
         child: SizedBox(
           width: double.infinity,
@@ -37,27 +50,55 @@ class PhoneNumberScreen extends StatelessWidget {
               SizedBox(
                 height: 50,
               ),
+              TextButton(
+                onPressed: () => {},
+                child: Text(
+                  "Login's",
+                ),
+              ),
+              // coming from global theme
               ElevatedButton(
                 onPressed: () => {},
-                child: Text("Login"),
-              )
-
-              /* Container(
-                height: 53,
-                width: 263,
-                decoration: BoxDecoration(
-                  color: MyColors.redPrimary,
-                  borderRadius: BorderRadius.circular(4),
+                child: Text(
+                  "Login's",
                 ),
-                child: const Center(
-                  child: Text(
-                    "Login",
-                    style: TextStyle(
-                      color: Colors.white,
-                    ),
+              ),
+              ElevatedButton(
+                style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.all(
+                    Colors.yellow,
                   ),
                 ),
-              ),*/
+                onPressed: () => {},
+                child: Text(
+                  "Login's",
+                ),
+              ),
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  primary: Colors.greenAccent,
+                ),
+                onPressed: () => {},
+                child: Text(
+                  "Login's",
+                ),
+              ),
+              // Container(
+              //   height: 53,
+              //   width: 263,
+              //   decoration: BoxDecoration(
+              //     color: MyColors.redPrimary,
+              //     borderRadius: BorderRadius.circular(4),
+              //   ),
+              //   child: Center(
+              //     child: Text(
+              //       "Login",
+              //       style: TextStyle(
+              //         color: Colors.white,
+              //       ),
+              //     ),
+              //   ),
+              // )
             ],
           ),
         ),

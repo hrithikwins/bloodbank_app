@@ -8,17 +8,19 @@
 //   Widget build(BuildContext context) {
 //     return Scaffold(
 //       body: SafeArea(
-//         child: Container(
-//           color: Colors.red,
-//           width: double.infinity,
-//           child: SingleChildScrollView(
-//             child: Column(
-//               mainAxisAlignment: MainAxisAlignment.center,
+//         child: InkWell(
+//           onTap: () => {
+//             Navigator.pop(context),
+//           },
+//           child: Container(
+//             color: Colors.red,
+//             child: ListView(
+//               // mainAxisAlignment: MainAxisAlignment.center,
 //               children: onboardingData
 //                   .map(
-//                     (singleOnboardingScreen) => onboardingWidget(
-//                       imageUrl: singleOnboardingScreen["image_url"]!,
-//                       text: singleOnboardingScreen["text"]!,
+//                     (onboardingSingleData) => onboardingWidget(
+//                       onboardingSingleData["text"]!,
+//                       imageUrl: onboardingSingleData["image_url"],
 //                     ),
 //                   )
 //                   .toList(),
@@ -26,34 +28,6 @@
 //           ),
 //         ),
 //       ),
-//     );
-//   }
-
-//   Widget onboardingWidget(
-//       {required String imageUrl, String text = "", int? index}) {
-//     return Column(
-//       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-//       children: [
-//         Container(
-//           child: Image.asset(
-//             imageUrl,
-//           ),
-//         ),
-//         Container(
-//           padding: EdgeInsets.only(
-//             left: 57.0,
-//             right: 56.0,
-//           ),
-//           child: Text(
-//             text,
-//             textAlign: TextAlign.center,
-//             style: TextStyle(
-//               fontSize: 18,
-//               color: Colors.white,
-//             ),
-//           ),
-//         )
-//       ],
 //     );
 //   }
 // }
