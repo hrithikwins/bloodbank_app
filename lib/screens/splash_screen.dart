@@ -9,17 +9,6 @@ class SplashScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          "Splash Screen",
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () => {},
-        child: Icon(
-          Icons.add,
-        ),
-      ),
       body: SafeArea(
         child: InkWell(
           onTap: () => {
@@ -41,3 +30,12 @@ class SplashScreen extends StatelessWidget {
     );
   }
 }
+
+// class _SplashScreenState extends State<SplashScreen> {
+//   @overrides
+//   void initState() {
+//     Future.delayed(Duration(milliseconds: 500),
+//         () => Navigator.pushNamed((context), "/onboarding"));
+//     super.initState();
+//   }
+// }
