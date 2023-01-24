@@ -9,6 +9,19 @@ class MobileNumber extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: FloatingActionButton.extended(
+        icon: Icon(Icons.remove),
+        label: Text('Hello'),
+
+        onPressed: () => null,
+        // child: Column(
+        //   children: [
+        //     Icon(Icons.remove),
+        //     Icon(Icons.remove),
+        //     Icon(Icons.remove),
+        //   ],
+        // ),
+      ),
       body: SafeArea(
         child: Container(
           width: double.infinity,
@@ -56,11 +69,30 @@ class MobileNumber extends StatelessWidget {
               SizedBox(
                 height: 67,
               ),
+              TextButton(
+                onPressed: () => {},
+                child: Text(
+                  "Login's",
+                ),
+              ),
+              // coming from global theme
               ElevatedButton(
                 onPressed: () => {},
-                child: Text("Login"),
+                child: Text(
+                  "Login's",
+                ),
               ),
-
+              ElevatedButton(
+                style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.all(
+                    Colors.yellow,
+                  ),
+                ),
+                onPressed: () => {},
+                child: Text(
+                  "Login's",
+                ),
+              ),
               // Container(
               //   height: 53,
               //   width: 263,
