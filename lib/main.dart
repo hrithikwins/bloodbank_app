@@ -19,6 +19,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      title: 'Blood Bank App',
+      theme: ThemeData(
+        primaryColor: Colors.blueGrey,
+        primarySwatch: Colors.red
+      ),
       // home: MySplashScreen(),
       initialRoute: '/',
       routes: {
