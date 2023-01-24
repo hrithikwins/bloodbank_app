@@ -1,6 +1,7 @@
 // ignore_for_file: unused_import, prefer_const_constructors
 
 import 'package:bloodbank_app/screens/mobile_number.dart';
+import 'package:bloodbank_app/screens/onboarding/onboarding0.dart';
 import 'package:bloodbank_app/screens/onboarding/onboarding1.dart';
 import 'package:bloodbank_app/screens/onboarding/onboarding2.dart';
 import 'package:flutter/material.dart';
@@ -19,35 +20,15 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Bllood Bank App',
       theme: ThemeData(
-          // color shades
-          // accentColor: Colors.greenAccent,
-          primarySwatch: Colors.red,
-
-          elevatedButtonTheme: ElevatedButtonThemeData(
-            style: ButtonStyle(
-              backgroundColor: MaterialStateProperty.all(
-                Colors.pink,
-              ),
-              padding: MaterialStateProperty.all(
-                  EdgeInsets.symmetric(horizontal: 20)),
-            ),
-          ),
-          textButtonTheme: TextButtonThemeData(
-            style: ButtonStyle(
-              // textStyle: MaterialStateProperty.all(
-              //   TextStyle(fontSize: 24),
-              // ),
-              padding: MaterialStateProperty.all(
-                  EdgeInsets.symmetric(horizontal: 20)),
-            ),
-          )
-          // buttonTheme:
-          ),
+        primarySwatch: Colors.red,
+        // buttonTheme:
+      ),
       // home: SplashScreen(),
       initialRoute: '/',
       routes: {
         "/": (context) => SplashScreen(),
-        '/onboarding': (context) => OnboardingPage1(),
+        '/onboarding': (context) => OnboardingPage(),
+        '/onboarding1': (context) => OnboardingPage1(),
         '/onboarding2': (context) => OnboardingPage2(),
       },
     );
