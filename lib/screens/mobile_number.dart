@@ -1,4 +1,4 @@
-// ignore_for_file: avoid_unnecessary_containers, duplicate_ignore, sized_box_for_whitespace
+// ignore_for_file: avoid_unnecessary_containers, duplicate_ignore, sized_box_for_whitespace, prefer_const_constructors
 
 import 'package:bloodbank_app/constants/colors.dart';
 import 'package:flutter/material.dart';
@@ -27,8 +27,8 @@ class MobileNumber extends StatelessWidget {
                       ),
                     ),
                     Container(
-                      width: 265,
-                      margin: const EdgeInsets.only(
+                      width: 365,
+                      margin: EdgeInsets.only(
                         top: 15,
                       ),
                       padding: const EdgeInsets.fromLTRB(60, 14, 60, 17),
@@ -43,17 +43,43 @@ class MobileNumber extends StatelessWidget {
                           )),
                       child: Row(
                         children: [
-                          Text(
-                            "+91 "
-                          ),
-                          const TextField(
-                            decoration: InputDecoration(
-                                // prefix: Text("+91"), hintText: " Enter Number"),
-                          ),
-                    ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Text(
+                                "+91",
+                                style: TextStyle(
+                                  fontSize: 20,
+                                  color: MyColors.redPrimary,
+                                ),
+                              ),
+                              SizedBox(
+                                width: 25,
+                              ),
+                              SizedBox(
+                                width: 180,
+                                child: TextField(
+                                  decoration: InputDecoration(
+                                    // prefix: Text(
+                                    //   '+91',
+                                    //   style: TextStyle(
+                                    //     fontSize: 20,
+                                    //     color: MyColors.redPrimary,
+                                    //   ),
+                                    // ),
+                                    border: InputBorder.none,
+                                    //
+                                    hintText: 'Enter you number here',
+                                  ),
+                                ),
+                              ),
+                            ],
+                          )
                         ],
                       ),
-                ],
+                    ),
+                  ],
                 ),
               ),
 
@@ -61,6 +87,7 @@ class MobileNumber extends StatelessWidget {
               const SizedBox(
                 height: 67,
               ),
+
               ElevatedButton(
                 onPressed: () => {},
                 child: const Text("Login"),

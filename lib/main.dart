@@ -19,9 +19,30 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Bllood Bank App',
       theme: ThemeData(
-        primarySwatch: Colors.red,
-        // buttonTheme:
-      ),
+          // color shades
+          // accentColor: Colors.greenAccent,
+          primarySwatch: Colors.red,
+
+          elevatedButtonTheme: ElevatedButtonThemeData(
+            style: ButtonStyle(
+              backgroundColor: MaterialStateProperty.all(
+                Colors.pink,
+              ),
+              padding: MaterialStateProperty.all(
+                  EdgeInsets.symmetric(horizontal: 20)),
+            ),
+          ),
+          textButtonTheme: TextButtonThemeData(
+            style: ButtonStyle(
+              // textStyle: MaterialStateProperty.all(
+              //   TextStyle(fontSize: 24),
+              // ),
+              padding: MaterialStateProperty.all(
+                  EdgeInsets.symmetric(horizontal: 20)),
+            ),
+          )
+          // buttonTheme:
+          ),
       // home: SplashScreen(),
       initialRoute: '/',
       routes: {
