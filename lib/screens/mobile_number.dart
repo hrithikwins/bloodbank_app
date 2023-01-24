@@ -40,12 +40,40 @@ class MobileNumber extends StatelessWidget {
                               20,
                             ),
                           )),
-                      child: Text(
-                        "+91",
-                        style: TextStyle(
-                          fontSize: 18,
-                          color: MyColors.redPrimary,
-                        ),
+                      child: Row(
+                        children: [
+                          Text(
+                            "+91",
+                            style: TextStyle(
+                              fontSize: 18,
+                              color: MyColors.redPrimary,
+                            ),
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Text(
+                                "+91",
+                                style: TextStyle(
+                                  fontSize: 20,
+                                  color: MyColors.redPrimary,
+                                ),
+                              ),
+                              SizedBox(
+                                width: 25,
+                              ),
+                              Container(
+                                width: 180,
+                                child: TextField(
+                                  decoration: InputDecoration(
+                                    hintText: 'Enter you number here',
+                                  ),
+                                ),
+                              ),
+                            ],
+                          )
+                        ],
                       ),
                     ),
                   ],
@@ -56,6 +84,7 @@ class MobileNumber extends StatelessWidget {
               SizedBox(
                 height: 67,
               ),
+
               Container(
                 height: 53,
                 width: 263,
