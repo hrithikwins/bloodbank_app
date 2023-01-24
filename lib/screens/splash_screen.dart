@@ -9,6 +9,17 @@ class SplashScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          "Splash Screen",
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () => {},
+        child: Icon(
+          Icons.add,
+        ),
+      ),
       body: SafeArea(
         child: InkWell(
           onTap: () => {

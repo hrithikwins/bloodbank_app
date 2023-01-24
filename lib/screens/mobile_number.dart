@@ -56,22 +56,27 @@ class MobileNumber extends StatelessWidget {
               SizedBox(
                 height: 67,
               ),
-              Container(
-                height: 53,
-                width: 263,
-                decoration: BoxDecoration(
-                  color: MyColors.redPrimary,
-                  borderRadius: BorderRadius.circular(4),
-                ),
-                child: Center(
-                  child: Text(
-                    "Login",
-                    style: TextStyle(
-                      color: Colors.white,
-                    ),
-                  ),
-                ),
-              )
+              ElevatedButton(
+                onPressed: () => {},
+                child: Text("Login"),
+              ),
+
+              // Container(
+              //   height: 53,
+              //   width: 263,
+              //   decoration: BoxDecoration(
+              //     color: MyColors.redPrimary,
+              //     borderRadius: BorderRadius.circular(4),
+              //   ),
+              //   child: Center(
+              //     child: Text(
+              //       "Login",
+              //       style: TextStyle(
+              //         color: Colors.white,
+              //       ),
+              //     ),
+              //   ),
+              // )
             ],
           ),
         ),
