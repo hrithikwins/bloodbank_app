@@ -24,18 +24,6 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        // ignore: prefer_const_constructors
-        title: Text(
-          "Splash Screen",
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () => {},
-        child: Icon(
-          Icons.add,
-        ),
-      ),
       body: SafeArea(
         child: Center(
           child: Image.asset(
