@@ -41,15 +41,19 @@ class MobileNumber extends StatelessWidget {
                               20,
                             ),
                           )),
-                      child: Text(
-                        "+91",
-                        style: TextStyle(
-                          fontSize: 18,
-                          color: MyColors.redPrimary,
-                        ),
-                      ),
+                      child: Row(
+                        children: [
+                          Text(
+                            "+91 "
+                          ),
+                          const TextField(
+                            decoration: InputDecoration(
+                                // prefix: Text("+91"), hintText: " Enter Number"),
+                          ),
                     ),
-                  ],
+                        ],
+                      ),
+                ],
                 ),
               ),
 
