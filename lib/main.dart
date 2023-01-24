@@ -21,7 +21,6 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Blood Bank App',
       theme: ThemeData(
-        primaryColor: Colors.blueGrey,
         primarySwatch: Colors.red
       ),
       // home: MySplashScreen(),
