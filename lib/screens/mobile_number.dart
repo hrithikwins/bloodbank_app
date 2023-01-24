@@ -26,7 +26,7 @@ class MobileNumber extends StatelessWidget {
                       ),
                     ),
                     Container(
-                      width: 265,
+                      width: 365,
                       margin: EdgeInsets.only(
                         top: 15,
                       ),
@@ -42,13 +42,6 @@ class MobileNumber extends StatelessWidget {
                           )),
                       child: Row(
                         children: [
-                          Text(
-                            "+91",
-                            style: TextStyle(
-                              fontSize: 18,
-                              color: MyColors.redPrimary,
-                            ),
-                          ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.start,
                             crossAxisAlignment: CrossAxisAlignment.center,
@@ -63,10 +56,20 @@ class MobileNumber extends StatelessWidget {
                               SizedBox(
                                 width: 25,
                               ),
-                              Container(
+                              SizedBox(
+
                                 width: 180,
                                 child: TextField(
                                   decoration: InputDecoration(
+                                    // prefix: Text(
+                                    //   '+91',
+                                    //   style: TextStyle(
+                                    //     fontSize: 20,
+                                    //     color: MyColors.redPrimary,
+                                    //   ),
+                                    // ),
+                                    border: InputBorder.none,
+                                    //
                                     hintText: 'Enter you number here',
                                   ),
                                 ),
