@@ -1,5 +1,7 @@
 // ignore_for_file: avoid_unnecessary_containers, duplicate_ignore, sized_box_for_whitespace, prefer_const_constructors
 
+import 'dart:developer';
+
 import 'package:bloodbank_app/constants/colors.dart';
 import 'package:flutter/material.dart';
 
@@ -8,6 +10,11 @@ class MobileNumber extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    TextEditingController _phoneNumberController = TextEditingController();
+
+    log("---------------------------------------------------------");
+    log("---------------mobile_number.dart------------------------");
+    log("---------------------------------------------------------");
     return Scaffold(
       body: SafeArea(
         child: Container(
@@ -27,11 +34,12 @@ class MobileNumber extends StatelessWidget {
                       ),
                     ),
                     Container(
-                      width: 365,
+                      // width: 365,
+                      width: MediaQuery.of(context).size.width * 0.73,
                       margin: EdgeInsets.only(
                         top: 15,
                       ),
-                      padding: const EdgeInsets.fromLTRB(60, 14, 60, 17),
+                      padding: const EdgeInsets.fromLTRB(25, 14, 25, 17),
                       decoration: BoxDecoration(
                           border: Border.all(
                             width: 0.8,
@@ -60,16 +68,9 @@ class MobileNumber extends StatelessWidget {
                               SizedBox(
                                 width: 180,
                                 child: TextField(
+                                  controller: _phoneNumberController,
                                   decoration: InputDecoration(
-                                    // prefix: Text(
-                                    //   '+91',
-                                    //   style: TextStyle(
-                                    //     fontSize: 20,
-                                    //     color: MyColors.redPrimary,
-                                    //   ),
-                                    // ),
                                     border: InputBorder.none,
-                                    //
                                     hintText: 'Enter you number here',
                                   ),
                                 ),
@@ -82,33 +83,22 @@ class MobileNumber extends StatelessWidget {
                   ],
                 ),
               ),
-
               // add some spacing
               const SizedBox(
                 height: 67,
               ),
 
               ElevatedButton(
-                onPressed: () => {},
-                child: const Text("Login"),
+                style: ButtonStyle(
+                    fixedSize: MaterialStateProperty.all(Size(265, 53))),
+                onPressed: () => {
+                  if (_phoneNumberController.text.isNotEmpty)
+                    print(
+                        "Your Phone Number is ${_phoneNumberController.text}"),
+                  Navigator.pushNamed((context), "/otp-screen")
+                },
+                child: Text('Log In'),
               ),
-
-              // Container(
-              //   height: 53,
-              //   width: 263,
-              //   decoration: BoxDecoration(
-              //     color: MyColors.redPrimary,
-              //     borderRadius: BorderRadius.circular(4),
-              //   ),
-              //   child: Center(
-              //     child: Text(
-              //       "Login",
-              //       style: TextStyle(
-              //         color: Colors.white,
-              //       ),
-              //     ),
-              //   ),
-              // )
             ],
           ),
         ),

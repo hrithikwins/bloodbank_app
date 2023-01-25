@@ -21,7 +21,10 @@ class MyApp extends StatelessWidget {
       title: 'Bllood Bank App',
       theme: ThemeData(
         primarySwatch: Colors.red,
-        // buttonTheme:
+        elevatedButtonTheme: ElevatedButtonThemeData(
+            style: ButtonStyle(
+                backgroundColor: MaterialStateColor.resolveWith(
+                    (states) => Color.fromARGB(168, 255, 14, 14)))),
       ),
       // home: SplashScreen(),
       initialRoute: '/',
