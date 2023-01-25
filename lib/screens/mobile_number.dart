@@ -3,6 +3,7 @@
 import 'dart:developer';
 
 import 'package:bloodbank_app/constants/colors.dart';
+import 'package:bloodbank_app/constants/routes.dart';
 import 'package:flutter/material.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -117,7 +118,7 @@ class LoginScreen extends StatelessWidget {
                     {
                       print(
                           "Your phone number is ${_phoneNumberController.text}"),
-                      Navigator.pushNamed(context, "/otp-screen")
+                      Navigator.pushNamed(context, Routes.otpScreen)
                     }
                 },
                 child: const Text("Login"),
