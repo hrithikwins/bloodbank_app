@@ -1,5 +1,6 @@
 // ignore_for_file: unused_import, prefer_const_constructors
 
+import 'package:bloodbank_app/constants/routes.dart';
 import 'package:bloodbank_app/screens/mobile_number.dart';
 import 'package:bloodbank_app/screens/onboarding/onboarding0.dart';
 import 'package:bloodbank_app/screens/onboarding/onboarding1.dart';
@@ -20,14 +21,22 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Bllood Bank App',
       theme: ThemeData(
-        primarySwatch: Colors.red,
-        // buttonTheme:
-      ),
+          primarySwatch: Colors.red,
+          elevatedButtonTheme: ElevatedButtonThemeData(
+              style: ButtonStyle(
+                  // backgroundColor: MaterialStatePropertyAll(Color(0xA8FF0E0E))))
+                  backgroundColor: MaterialStateColor.resolveWith(
+            // ((states) => Color.fromARGB(168.3, 255, 14, 14)),
+            ((states) => Color(0xa8ff0e0e)),
+            // 255*0.6
+          )))
+          // buttonTheme:
+          ),
       // home: SplashScreen(),
       initialRoute: '/',
       routes: {
         "/": (context) => SplashScreen(),
-        '/onboarding': (context) => OnboardingPage(),
+        "/onboarding": (context) => OnboardingPage(),
         '/onboarding1': (context) => OnboardingPage1(),
         '/onboarding2': (context) => OnboardingPage2(),
       },
