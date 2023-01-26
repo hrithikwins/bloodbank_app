@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 
 import '../../widgets/onboarding_widget.dart';
 
-class OnboardingPage extends StatelessWidget {
-  const OnboardingPage({super.key});
+class OnboardingScreen extends StatelessWidget {
+  const OnboardingScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +15,7 @@ class OnboardingPage extends StatelessWidget {
           onTap: () => {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => OnboardingPage1()),
+              MaterialPageRoute(builder: (context) => const OnboardingScreen1()),
             )
           },
           child: Container(

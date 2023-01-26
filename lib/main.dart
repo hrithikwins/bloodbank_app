@@ -1,10 +1,6 @@
-import 'package:bloodbank_app/screens/mobile_number.dart';
-import 'package:bloodbank_app/screens/onboarding/onboarding1.dart';
-import 'package:bloodbank_app/screens/onboarding/onboarding2.dart';
 import 'package:flutter/material.dart';
 
-import 'screens/mobile_number.dart';
-import 'screens/splash_screen.dart';
+import 'constants/routes.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,39 +12,40 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Bllood Bank App',
+      debugShowCheckedModeBanner: false,
+      title: 'Blood Bank App',
+
       theme: ThemeData(
           // color shades
-          // accentColor: Colors.greenAccent,
           primarySwatch: Colors.red,
 
+          // Global Elevated Button Theme:
           elevatedButtonTheme: ElevatedButtonThemeData(
             style: ButtonStyle(
               backgroundColor: MaterialStateProperty.all(
-                Colors.pink,
+                Colors.deepPurple,
               ),
               padding: MaterialStateProperty.all(
-                  EdgeInsets.symmetric(horizontal: 20)),
+                const EdgeInsets.symmetric(horizontal: 20),
+              ),
             ),
           ),
+
+          // Global text Button Theme:
           textButtonTheme: TextButtonThemeData(
             style: ButtonStyle(
               // textStyle: MaterialStateProperty.all(
               //   TextStyle(fontSize: 24),
               // ),
               padding: MaterialStateProperty.all(
-                  EdgeInsets.symmetric(horizontal: 20)),
+                const EdgeInsets.symmetric(horizontal: 20),
+              ),
             ),
-          )
-          // buttonTheme:
-          ),
+          )),
+
       // home: SplashScreen(),
+      routes: routeMap,
       initialRoute: '/',
-      routes: {
-        "/": (context) => SplashScreen(),
-        '/onboarding': (context) => OnboardingPage1(),
-        '/onboarding2': (context) => OnboardingPage2(),
-      },
     );
   }
 }

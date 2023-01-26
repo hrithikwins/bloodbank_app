@@ -1,9 +1,6 @@
-import 'package:bloodbank_app/screens/onboarding/onboarding0.dart';
-import 'package:bloodbank_app/screens/onboarding_screen.dart';
-import 'package:bloodbank_app/widgets/onboarding_widget.dart';
+
 import 'package:flutter/material.dart';
 
-import 'onboarding/onboarding0.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -32,13 +29,13 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
+        title: const Text(
           "Splash Screen",
         ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () => {},
-        child: Icon(
+        child: const Icon(
           Icons.add,
         ),
       ),
@@ -49,7 +46,7 @@ class _SplashScreenState extends State<SplashScreen> {
             // Navigator.push(
             //   context,
             //   MaterialPageRoute(
-            //     builder: (context) => OnboardingPage(),
+            //     builder: (context) => OnboardingScreen(),
             //   ),
             // )
           },

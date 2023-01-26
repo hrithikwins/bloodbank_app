@@ -1,8 +1,5 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, avoid_returning_null_for_void
 
-import 'dart:ui';
-
-import 'package:bloodbank_app/constants/colors.dart';
 import 'package:flutter/material.dart';
 
 class MobileNumber extends StatelessWidget {
@@ -33,15 +30,15 @@ class MobileNumber extends StatelessWidget {
             children: [
               //the enter number field
               Column(
-                children: [
-                  Container(
-                    child: Text(
-                      "Enter your mobile number",
-                    ),
+                children: const [
+                  Text(
+                    "Enter your mobile number",
                   ),
                   SizedBox(
                     width: 265,
-                    child: TextField(),
+                    child: TextField(
+                      style: TextStyle(),
+                    ),
                   ),
                 ],
               ),
@@ -50,6 +47,7 @@ class MobileNumber extends StatelessWidget {
               SizedBox(
                 height: 50,
               ),
+              // Pressable Button.
               TextButton(
                 onPressed: () => {},
                 child: Text(
@@ -63,6 +61,8 @@ class MobileNumber extends StatelessWidget {
                   "Login's",
                 ),
               ),
+              
+              // Specifying a Widget of a non-themeic color.
               ElevatedButton(
                 style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.all(
@@ -74,15 +74,7 @@ class MobileNumber extends StatelessWidget {
                   "Login's",
                 ),
               ),
-              ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  primary: Colors.greenAccent,
-                ),
-                onPressed: () => {},
-                child: Text(
-                  "Login's",
-                ),
-              ),
+
               // Container(
               //   height: 53,
               //   width: 263,
