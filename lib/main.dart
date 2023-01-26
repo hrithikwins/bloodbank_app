@@ -14,7 +14,19 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: MyOnboardingPage(),
+      title: 'Bllood Bank App',
+      theme: ThemeData(
+        primarySwatch: Colors.red,
+        // buttonTheme:
+      ),
+      // home: SplashScreen(),
+      initialRoute: '/',
+      routes: {
+        "/": (context) => SplashScreen(),
+        '/onboarding': (context) => OnboardingPage(),
+        '/onboarding1': (context) => OnboardingPage1(),
+        '/onboarding2': (context) => OnboardingPage2(),
+      },
     );
   }
 }
