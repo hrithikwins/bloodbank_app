@@ -1,7 +1,7 @@
 // ignore_for_file: avoid_unnecessary_containers, duplicate_ignore, sized_box_for_whitespace, prefer_const_constructors
 
 import 'dart:developer';
-
+import 'package:bloodbank_app/constants/routes.dart';
 import 'package:bloodbank_app/constants/colors.dart';
 import 'package:flutter/material.dart';
 
@@ -95,7 +95,7 @@ class MobileNumber extends StatelessWidget {
                   if (_phoneNumberController.text.isNotEmpty)
                     print(
                         "Your Phone Number is ${_phoneNumberController.text}"),
-                  Navigator.pushNamed((context), "/otp-screen")
+                  Navigator.pushNamed((context), Routes.otpScreen),
                 },
                 child: Text('Log In'),
               ),
