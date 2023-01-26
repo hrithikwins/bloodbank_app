@@ -1,4 +1,6 @@
-import 'package:bloodbank_app/screens/onboarding_screen.dart';
+import 'package:bloodbank_app/screens/onboarding/onboarding0.dart';
+import 'package:bloodbank_app/screens/onboarding/onboarding1.dart';
+import 'package:bloodbank_app/screens/onboarding/onboarding2.dart';
 import 'package:bloodbank_app/screens/splash_screen.dart';
 import 'package:flutter/material.dart';
 

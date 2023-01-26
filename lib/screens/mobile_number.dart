@@ -28,7 +28,7 @@ class MobileNumber extends StatelessWidget {
                     ),
                     Container(
                       width: 365,
-                      margin: EdgeInsets.only(
+                      margin: const EdgeInsets.only(
                         top: 15,
                       ),
                       padding: const EdgeInsets.fromLTRB(60, 14, 60, 17),
@@ -54,11 +54,10 @@ class MobileNumber extends StatelessWidget {
                                   color: MyColors.redPrimary,
                                 ),
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 width: 25,
                               ),
-                              SizedBox(
-
+                              const SizedBox(
                                 width: 180,
                                 child: TextField(
                                   decoration: InputDecoration(
