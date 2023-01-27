@@ -42,7 +42,7 @@ class MyApp extends StatelessWidget {
           // buttonTheme:
           ),
       // home: SplashScreen(),
-      initialRoute: Routes.otpScreen,
+      initialRoute: Routes.loginScreen,
       routes: {
         // "/": (context) => SplashScreen(),
         Routes.onboardingScreen: (context) => OnboardingPage(),
