@@ -13,14 +13,14 @@ Widget onboardingWidget(
         ),
       ),
       Container(
-        padding: EdgeInsets.only(
+        padding: const EdgeInsets.only(
           left: 57.0,
           right: 56.0,
         ),
         child: Text(
           text,
           textAlign: TextAlign.center,
-          style: TextStyle(
+          style: const TextStyle(
             fontSize: 18,
             color: Colors.white,
           ),

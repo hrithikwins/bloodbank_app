@@ -1,76 +1,101 @@
 // ignore_for_file: avoid_unnecessary_containers, duplicate_ignore, sized_box_for_whitespace
 
+import 'dart:developer';
+
 import 'package:bloodbank_app/constants/colors.dart';
+import 'package:bloodbank_app/constants/routes.dart';
 import 'package:flutter/material.dart';
 
-class MobileNumber extends StatelessWidget {
-  const MobileNumber({super.key});
+class LoginScreen extends StatelessWidget {
+  const LoginScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    TextEditingController _phoneNumberController = TextEditingController();
+    log("---------------------------------------------");
+    log("---------mobile_number.dart------------");
+    log("---------------------------------------------");
     return Scaffold(
       body: SafeArea(
         child: Container(
           width: double.infinity,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            // crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               //the enter number field
-              // ignore: avoid_unnecessary_containers
               Container(
                 child: Column(
                   children: [
                     Container(
-                      child: const Text(
-                        "Enter your mobile number",
+                      child: Image.asset(
+                        'assets/blood-bag-login-scrn.png',
+                        scale: 5.0,
                       ),
                     ),
+
                     Container(
-                      width: 365,
-                      margin: EdgeInsets.only(
-                        top: 15,
+                      margin: EdgeInsets.only(top: 50),
+                      child: const Text(
+                        "Login to Blood Bank",
+                        style: TextStyle(fontSize: 20),
                       ),
-                      padding: const EdgeInsets.fromLTRB(60, 14, 60, 17),
+                    ),
+
+                    // Text field Container
+                    Container(
+                      // width: 365,
+                      // 48 as padding on both sides and 265 to be width
+                      // so the percentage is ~73%
+                      width: MediaQuery.of(context).size.width * 0.73,
+                      margin: const EdgeInsets.only(
+                        top: 20,
+                      ),
+                      padding:
+                          const EdgeInsets.only(left: 30, top: 14, bottom: 14),
                       decoration: BoxDecoration(
-                          border: Border.all(
-                            width: 0.8,
+                        border: Border.all(
+                          width: 1,
+                        ),
+                        borderRadius: const BorderRadius.all(
+                          Radius.circular(
+                            25,
                           ),
-                          borderRadius: const BorderRadius.all(
-                            Radius.circular(
-                              20,
-                            ),
-                          )),
+                        ),
+                      ),
                       child: Row(
                         children: [
                           Row(
                             mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
                               Text(
-                                "+91",
+                                "+91-",
                                 style: TextStyle(
                                   fontSize: 20,
                                   color: MyColors.redPrimary,
                                 ),
                               ),
-                              SizedBox(
-                                width: 25,
+                              const SizedBox(
+                                width: 2,
                               ),
                               SizedBox(
-
                                 width: 180,
                                 child: TextField(
-                                  decoration: InputDecoration(
+                                  // validator: (value) => ,
+                                  // onChanged: (value) =>
+                                  //     {_phoneNumberController.text = value},
+                                  controller: _phoneNumberController,
+                                  style: const TextStyle(
+                                    fontSize: 20,
+                                  ),
+                                  decoration: const InputDecoration(
                                     // prefix: Text(
                                     //   '+91',
                                     //   style: TextStyle(
                                     //     fontSize: 20,
-                                    //     color: MyColors.redPrimary,
                                     //   ),
                                     // ),
+
                                     border: InputBorder.none,
-                                    //
                                     hintText: 'Enter you number here',
                                   ),
                                 ),
@@ -86,14 +111,37 @@ class MobileNumber extends StatelessWidget {
 
               // add some spacing
               const SizedBox(
-                height: 67,
+                height: 50,
               ),
 
               ElevatedButton(
-                onPressed: () => {},
-                child: const Text("Login"),
+                style: ButtonStyle(
+                  fixedSize: MaterialStateProperty.all(
+                    Size(
+                      MediaQuery.of(context).size.width * 0.40,
+                      50,
+                    ),
+                  ),
+                ),
+                onPressed: () => {
+                  if (_phoneNumberController.text.isNotEmpty &&
+                      _phoneNumberController.text.length == 10)
+                    {
+                      print(
+                          "Your phone number is ${_phoneNumberController.text}"),
+                      Navigator.pushNamed(context, Routes.otpScreen)
+                    }
+                },
+                child: const Text("log in"),
               ),
 
+              TextButton(
+                onPressed: () =>
+                    {Navigator.pushNamed(context, Routes.signUpScreen)},
+                child: const Text("sign up"),
+              ),
+
+              // Dummy Button Design Container
               // Container(
               //   height: 53,
               //   width: 263,
