@@ -17,6 +17,10 @@ class OtpScreen extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
+          const Text(
+            "Enter OTP",
+            style: TextStyle(fontSize: 20),
+          ),
           OTPTextField(
             controller: otpController,
             onChanged: (pin) {
@@ -25,8 +29,8 @@ class OtpScreen extends StatelessWidget {
             length: 5,
             // onChanged: (value) => print(value),
             width: MediaQuery.of(context).size.width,
-            fieldWidth: 50,
-            style: TextStyle(fontSize: 15),
+            fieldWidth: 40,
+            style: const TextStyle(fontSize: 15),
             textFieldAlignment: MainAxisAlignment.spaceAround,
             fieldStyle: FieldStyle.underline,
             onCompleted: (pin) {
@@ -37,12 +41,14 @@ class OtpScreen extends StatelessWidget {
               // );
             },
           ),
-          //
+          const SizedBox(
+            height: 20,
+          ),
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: ElevatedButton(
               onPressed: () => {Navigator.pushNamed(context, Routes.home)},
-              child: Text("Verify OTP"),
+              child: const Text("Verify OTP"),
             ),
           ),
         ],
