@@ -1,3 +1,4 @@
+
 import 'package:bloodbank_app/constants/colors.dart';
 import 'package:bloodbank_app/constants/routes.dart';
 import 'package:flutter/material.dart';
@@ -8,6 +9,10 @@ class SignUpScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final _formKey = GlobalKey<FormState>();
+    Map<String, String> formData = {
+      "name": "",
+      "dateOfBirth": "",
+    };
 
     return Scaffold(
       body: SafeArea(
@@ -27,6 +32,7 @@ class SignUpScreen extends StatelessWidget {
                     // Validate returns true if the form is valid, or false otherwise.
                     if (_formKey.currentState!.validate()) {
                       print("Valid");
+                      _formKey.currentState!.save();
                       Navigator.pushNamed(context, Routes.home);
                     }
                   },
@@ -54,7 +60,15 @@ class SignUpScreen extends StatelessWidget {
             ),
           ),
           TextFormField(
-            // decoration: InputDecoration(color),
+            decoration: InputDecoration(
+              errorStyle: TextStyle(
+                color: Colors.white,
+              ),
+            ),
+            onSaved: (newValue) => {
+              // formData["name"] =
+              print(newValue)
+            },
             validator: (value) {
               if (value == null || value.isEmpty) {
                 return 'Please enter some text';
