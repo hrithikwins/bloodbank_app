@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:bloodbank_app/constants/routes.dart';
 import 'package:bloodbank_app/utils/screen_utils.dart';
 import 'package:flutter/material.dart';
@@ -22,7 +20,7 @@ class OtpScreen extends StatelessWidget {
           OTPTextField(
             controller: otpController,
             onChanged: (pin) {
-              print("Changed: " + pin);
+              print("Changed: $pin");
             },
             length: 5,
             // onChanged: (value) => print(value),
@@ -32,7 +30,7 @@ class OtpScreen extends StatelessWidget {
             textFieldAlignment: MainAxisAlignment.spaceAround,
             fieldStyle: FieldStyle.underline,
             onCompleted: (pin) {
-              print("Completed: " + pin);
+              print("Completed: $pin");
               // Navigator.pushNamed(
               //   context,
               //   Routes.signUpScreen,

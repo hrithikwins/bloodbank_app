@@ -21,52 +21,61 @@ class LoginScreen extends StatelessWidget {
           width: double.infinity,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            // crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               //the enter number field
-              // ignore: avoid_unnecessary_containers
               Container(
                 child: Column(
                   children: [
                     Container(
-                      child: const Text(
-                        "Enter your mobile number",
+                      child: Image.asset(
+                        'assets/blood-bag-login-scrn.png',
+                        scale: 5.0,
                       ),
                     ),
+
+                    Container(
+                      margin: EdgeInsets.only(top: 50),
+                      child: const Text(
+                        "Login to Blood Bank",
+                        style: TextStyle(fontSize: 20),
+                      ),
+                    ),
+
+                    // Text field Container
                     Container(
                       // width: 365,
                       // 48 as padding on both sides and 265 to be width
                       // so the percentage is ~73%
                       width: MediaQuery.of(context).size.width * 0.73,
-                      margin: EdgeInsets.only(
-                        top: 15,
+                      margin: const EdgeInsets.only(
+                        top: 20,
                       ),
                       padding:
-                          const EdgeInsets.only(left: 40, top: 14, bottom: 17),
+                          const EdgeInsets.only(left: 30, top: 14, bottom: 14),
                       decoration: BoxDecoration(
-                          border: Border.all(
-                            width: 0.8,
+                        border: Border.all(
+                          width: 1,
+                        ),
+                        borderRadius: const BorderRadius.all(
+                          Radius.circular(
+                            25,
                           ),
-                          borderRadius: const BorderRadius.all(
-                            Radius.circular(
-                              20,
-                            ),
-                          )),
+                        ),
+                      ),
                       child: Row(
                         children: [
                           Row(
                             mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
                               Text(
-                                "+91",
+                                "+91-",
                                 style: TextStyle(
                                   fontSize: 20,
                                   color: MyColors.redPrimary,
                                 ),
                               ),
-                              SizedBox(
-                                width: 18,
+                              const SizedBox(
+                                width: 2,
                               ),
                               SizedBox(
                                 width: 180,
@@ -75,17 +84,18 @@ class LoginScreen extends StatelessWidget {
                                   // onChanged: (value) =>
                                   //     {_phoneNumberController.text = value},
                                   controller: _phoneNumberController,
-
-                                  decoration: InputDecoration(
+                                  style: const TextStyle(
+                                    fontSize: 20,
+                                  ),
+                                  decoration: const InputDecoration(
                                     // prefix: Text(
                                     //   '+91',
                                     //   style: TextStyle(
                                     //     fontSize: 20,
-                                    //     color: MyColors.redPrimary,
                                     //   ),
                                     // ),
+
                                     border: InputBorder.none,
-                                    //
                                     hintText: 'Enter you number here',
                                   ),
                                 ),
@@ -101,27 +111,28 @@ class LoginScreen extends StatelessWidget {
 
               // add some spacing
               const SizedBox(
-                height: 67,
+                height: 50,
               ),
 
               ElevatedButton(
                 style: ButtonStyle(
                   fixedSize: MaterialStateProperty.all(
                     Size(
-                      MediaQuery.of(context).size.width * 0.73,
-                      53,
+                      MediaQuery.of(context).size.width * 0.40,
+                      50,
                     ),
                   ),
                 ),
                 onPressed: () => {
-                  if (_phoneNumberController.text.isNotEmpty)
+                  if (_phoneNumberController.text.isNotEmpty &&
+                      _phoneNumberController.text.length == 10)
                     {
                       print(
                           "Your phone number is ${_phoneNumberController.text}"),
                       Navigator.pushNamed(context, Routes.otpScreen)
                     }
                 },
-                child: const Text("Login"),
+                child: const Text("log in"),
               ),
 
               TextButton(
@@ -129,6 +140,8 @@ class LoginScreen extends StatelessWidget {
                     {Navigator.pushNamed(context, Routes.signUpScreen)},
                 child: const Text("sign up"),
               ),
+
+              // Dummy Button Design Container
               // Container(
               //   height: 53,
               //   width: 263,
