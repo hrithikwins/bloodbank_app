@@ -99,6 +99,17 @@ class MobileNumber extends StatelessWidget {
                 },
                 child: Text('Log In'),
               ),
+              SizedBox(
+                height: 20,
+              ),
+              ElevatedButton(
+                style: ButtonStyle(
+                    fixedSize: MaterialStateProperty.all(Size(265, 53))),
+                onPressed: () => {
+                  Navigator.pushNamed((context), Routes.signUpScreen),
+                },
+                child: Text('Sign Up'),
+              ),
             ],
           ),
         ),
