@@ -39,6 +39,12 @@ class OtpScreen extends StatelessWidget {
                 // );
               },
             ),
+            ElevatedButton(
+              onPressed: () => {
+                Navigator.pushNamed(context, Routes.home),
+              },
+              child: Text("Go to home"),
+            ),
           ],
         ),
       ),
