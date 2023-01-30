@@ -9,10 +9,10 @@ class SignUpScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final _formKey = GlobalKey<FormState>();
-    Map<String, String> formData = {
-      "name": "",
-      "dateOfBirth": "",
-    };
+    // Map<String, String> formData = {
+    //   "name": "",
+    //   "dateOfBirth": "",
+    // };
 
     return Scaffold(
       body: SafeArea(

@@ -1,5 +1,5 @@
 class Routes {
-  static const String splashScreen = '/';
+  static const String splashScreen = '/splash';
   static const String onboardingScreen = '/onboarding';
   static const String onboarding1Screen = '/onboarding1';
   static const String onboarding2Screen = '/onboarding2';
