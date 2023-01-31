@@ -1,6 +1,6 @@
 import 'package:bloodbank_app/constants/routes.dart';
 import 'package:bloodbank_app/screens/onboarding/onboarding0.dart';
-import 'package:bloodbank_app/screens/onboarding_screen.dart';
+// import 'package:bloodbank_app/screens/onboarding_screen.dart';
 import 'package:bloodbank_app/widgets/onboarding_widget.dart';
 import 'package:flutter/material.dart';
 
