@@ -1,5 +1,6 @@
 import 'package:bloodbank_app/constants/colors.dart';
 import 'package:bloodbank_app/constants/routes.dart';
+import 'package:bloodbank_app/constants/shared_prefs.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -51,23 +52,25 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 children: [
                   textFieldWithLabel(
                     "Your Name",
-                    userDataFieldKey: "name",
+                    userDataFieldKey: SharedPrefsConstant.name.toString(),
                   ),
                   textFieldWithLabel(
                     "Date of Birth",
-                    userDataFieldKey: "dateOfBirth",
+                    userDataFieldKey:
+                        SharedPrefsConstant.dateOfBirth.toString(),
                   ),
                   textFieldWithLabel(
                     "Age",
-                    userDataFieldKey: "age",
+                    userDataFieldKey: SharedPrefsConstant.age.toString(),
                   ),
                   textFieldWithLabel(
                     "Prevailing Health Conditions",
-                    userDataFieldKey: "healthConditions",
+                    userDataFieldKey:
+                        SharedPrefsConstant.healthConditions.toString(),
                   ),
                   textFieldWithLabel(
                     "Blood Group",
-                    userDataFieldKey: "bloodGroup",
+                    userDataFieldKey: SharedPrefsConstant.bloodGroup.toString(),
                   ),
                   ElevatedButton(
                     onPressed: () async {
@@ -76,8 +79,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         print("Valid");
                         _formKey.currentState!.save();
                         // prefs.setString(key, value)
-
-                        // Navigator.pushNamed(context, Routes.home);
+                        Navigator.pushNamed(context, Routes.home);
                       }
                     },
                     child: const Text('Submit'),
@@ -117,6 +119,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       newValue,
                     )
                   : prefs.setString(userDataFieldKey, ""),
+              print(
+                  " $userDataFieldKey is ${prefs.getString(userDataFieldKey)}"),
             },
             validator: (value) {
               if (value == null || value.isEmpty) {
