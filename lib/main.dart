@@ -12,8 +12,7 @@ import 'package:bloodbank_app/screens/mobile_number.dart';
 import 'package:bloodbank_app/screens/onboarding/onboarding0.dart';
 import 'package:bloodbank_app/screens/onboarding/onboarding1.dart';
 import 'package:bloodbank_app/screens/onboarding/onboarding2.dart';
-import 'package:bloodbank_app/screens/otpScreen.dart';
-// import 'package:bloodbank_app/screens/otp_screen.dart';
+import 'package:bloodbank_app/screens/otp_screen.dart';
 import 'package:bloodbank_app/screens/sign_up_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -43,7 +42,7 @@ class MyApp extends StatelessWidget {
           // buttonTheme:
           ),
       // home: SplashScreen(),
-      initialRoute: Routes.splashScreen,
+      initialRoute: Routes.signUpScreen,
       routes: {
         Routes.splashScreen: (context) => SplashScreen(),
         Routes.onboardingScreen: (context) => OnboardingPage(),
@@ -53,12 +52,12 @@ class MyApp extends StatelessWidget {
         Routes.otpScreen: (context) => OtpScreen(),
         Routes.signUpScreen: (context) => SignUpScreen(),
         Routes.home: (context) => Home(),
-        // Routes.findDonors: (context) => FindDonors(),
-        // Routes.incomingRequests: (context) => IncomingRequests(),
-        // Routes.history: (context) => History(),
-        // Routes.allMessages: (context) => AllMessages(),
-        // Routes.donorsMap: (context) => DonorsMap(),
-        // Routes.messages: (context) => Messages(),
+        Routes.findDonors: (context) => FindDonors(),
+        Routes.incomingRequests: (context) => IncomingRequests(),
+        Routes.history: (context) => History(),
+        Routes.allMessages: (context) => AllMessages(),
+        Routes.donorsMap: (context) => DonorsMap(),
+        Routes.messages: (context) => Messages(),
       },
     );
   }
