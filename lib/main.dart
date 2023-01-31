@@ -12,6 +12,7 @@ import 'package:bloodbank_app/screens/mobile_number.dart';
 import 'package:bloodbank_app/screens/onboarding/onboarding0.dart';
 import 'package:bloodbank_app/screens/onboarding/onboarding1.dart';
 import 'package:bloodbank_app/screens/onboarding/onboarding2.dart';
+import 'package:bloodbank_app/screens/otpScreen.dart';
 // import 'package:bloodbank_app/screens/otp_screen.dart';
 import 'package:bloodbank_app/screens/sign_up_screen.dart';
 import 'package:flutter/material.dart';
@@ -42,14 +43,14 @@ class MyApp extends StatelessWidget {
           // buttonTheme:
           ),
       // home: SplashScreen(),
-      initialRoute: Routes.signUpScreen,
+      initialRoute: Routes.splashScreen,
       routes: {
         Routes.splashScreen: (context) => SplashScreen(),
         Routes.onboardingScreen: (context) => OnboardingPage(),
         Routes.onboarding1Screen: (context) => OnboardingPage1(),
         Routes.onboarding2Screen: (context) => OnboardingPage2(),
-        // Routes.loginScreen: (context) => LoginScreen(),
-        // Routes.otpScreen: (context) => OtpScreen(),
+        Routes.loginScreen: (context) => LoginScreen(),
+        Routes.otpScreen: (context) => OtpScreen(),
         Routes.signUpScreen: (context) => SignUpScreen(),
         Routes.home: (context) => Home(),
         // Routes.findDonors: (context) => FindDonors(),
