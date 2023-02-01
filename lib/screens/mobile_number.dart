@@ -4,17 +4,31 @@ import 'dart:developer';
 
 import 'package:bloodbank_app/constants/colors.dart';
 import 'package:bloodbank_app/constants/routes.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
 
+  @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     TextEditingController _phoneNumberController = TextEditingController();
     log("---------------------------------------------");
     log("---------mobile_number.dart------------");
     log("---------------------------------------------");
+
+    Future<void> _signUp() async {
+      if (_phoneNumberController.text.isNotEmpty) {
+        print("Your phone number is ${_phoneNumberController.text}");
+        // Navigator.pushNamed(context, Routes.otpScreen);
+      }
+    }
+
     return Scaffold(
       body: SafeArea(
         child: Container(
@@ -113,14 +127,7 @@ class LoginScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-                onPressed: () => {
-                  if (_phoneNumberController.text.isNotEmpty)
-                    {
-                      print(
-                          "Your phone number is ${_phoneNumberController.text}"),
-                      Navigator.pushNamed(context, Routes.otpScreen)
-                    }
-                },
+                onPressed: _signUp,
                 child: const Text("Login"),
               ),
 
