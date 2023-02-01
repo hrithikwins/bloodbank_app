@@ -119,8 +119,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       newValue,
                     )
                   : prefs.setString(userDataFieldKey, ""),
-              print(
-                  " $userDataFieldKey is ${prefs.getString(userDataFieldKey)}"),
+              print(userDataFieldKey),
             },
             validator: (value) {
               if (value == null || value.isEmpty) {
