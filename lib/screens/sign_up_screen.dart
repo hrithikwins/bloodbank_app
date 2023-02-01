@@ -1,21 +1,12 @@
 import 'package:bloodbank_app/constants/colors.dart';
 import 'package:bloodbank_app/constants/routes.dart';
 import 'package:bloodbank_app/constants/shared_prefs.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
-  // variable
-
-  // static Map<String, String> userData = {
-  //   "name": "",
-  //   "dateOfBirth": "",
-  //   "age": "",
-  //   "healthConditions": "",
-  //   "bloodGroup": "",
-  // };
-
   @override
   State<SignUpScreen> createState() => _SignUpScreenState();
 }
@@ -24,6 +15,23 @@ class _SignUpScreenState extends State<SignUpScreen> {
   final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
   final _formKey = GlobalKey<FormState>();
   late SharedPreferences prefs;
+  FirebaseFirestore db = FirebaseFirestore.instance;
+
+  Future<void> addDataToFirestore() async {
+    await db.collection("users").add({"name": "Hrithik"}).then(
+      (DocumentReference doc) =>
+          print('DocumentSnapshot added with ID: ${doc.id}'),
+    );
+  }
+
+  Future<void> addDataToSharedPrefs() async {
+    if (_formKey.currentState!.validate()) {
+      print("Valid");
+      _formKey.currentState!.save();
+      // prefs.setString(key, value)
+      Navigator.pushNamed(context, Routes.home);
+    }
+  }
 
   @override
   void initState() {
@@ -73,16 +81,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     userDataFieldKey: SharedPrefsConstant.bloodGroup.toString(),
                   ),
                   ElevatedButton(
-                    onPressed: () async {
-                      // Validate returns true if the form is valid, or false otherwise.
-                      if (_formKey.currentState!.validate()) {
-                        print("Valid");
-                        _formKey.currentState!.save();
-                        // prefs.setString(key, value)
-                        Navigator.pushNamed(context, Routes.home);
-                      }
-                    },
+                    onPressed: addDataToSharedPrefs,
                     child: const Text('Submit'),
+                  ),
+                  ElevatedButton(
+                    onPressed: addDataToFirestore,
+                    child: const Text('Add to Firestore'),
                   ),
                 ],
               ),
