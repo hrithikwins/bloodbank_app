@@ -1,5 +1,6 @@
 import 'package:bloodbank_app/constants/colors.dart';
 import 'package:bloodbank_app/constants/routes.dart';
+import 'package:bloodbank_app/constants/shared_prefs.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -40,46 +41,51 @@ class _SignUpScreenState extends State<SignUpScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Container(
-          color: MyColors.redPrimary,
-          child: Form(
-            key: _formKey,
-            child: Column(
-              children: [
-                textFieldWithLabel(
-                  "Your Name",
-                  userDataFieldKey: "name",
-                ),
-                textFieldWithLabel(
-                  "Date of Birth",
-                  userDataFieldKey: "dateOfBirth",
-                ),
-                textFieldWithLabel(
-                  "Age",
-                  userDataFieldKey: "age",
-                ),
-                textFieldWithLabel(
-                  "Prevailing Health Conditions",
-                  userDataFieldKey: "healthConditions",
-                ),
-                textFieldWithLabel(
-                  "Blood Group",
-                  userDataFieldKey: "bloodGroup",
-                ),
-                ElevatedButton(
-                  onPressed: () async {
-                    // Validate returns true if the form is valid, or false otherwise.
-                    if (_formKey.currentState!.validate()) {
-                      print("Valid");
-                      _formKey.currentState!.save();
-                      // prefs.setString(key, value)
-
-                      // Navigator.pushNamed(context, Routes.home);
-                    }
-                  },
-                  child: const Text('Submit'),
-                ),
-              ],
+        child: SingleChildScrollView(
+          child: Container(
+            height: MediaQuery.of(context).size.height -
+                MediaQuery.of(context).padding.top,
+            color: MyColors.redPrimary,
+            child: Form(
+              key: _formKey,
+              child: Column(
+                children: [
+                  textFieldWithLabel(
+                    "Your Name",
+                    userDataFieldKey: SharedPrefsConstant.name.toString(),
+                  ),
+                  textFieldWithLabel(
+                    "Date of Birth",
+                    userDataFieldKey:
+                        SharedPrefsConstant.dateOfBirth.toString(),
+                  ),
+                  textFieldWithLabel(
+                    "Age",
+                    userDataFieldKey: SharedPrefsConstant.age.toString(),
+                  ),
+                  textFieldWithLabel(
+                    "Prevailing Health Conditions",
+                    userDataFieldKey:
+                        SharedPrefsConstant.healthConditions.toString(),
+                  ),
+                  textFieldWithLabel(
+                    "Blood Group",
+                    userDataFieldKey: SharedPrefsConstant.bloodGroup.toString(),
+                  ),
+                  ElevatedButton(
+                    onPressed: () async {
+                      // Validate returns true if the form is valid, or false otherwise.
+                      if (_formKey.currentState!.validate()) {
+                        print("Valid");
+                        _formKey.currentState!.save();
+                        // prefs.setString(key, value)
+                        Navigator.pushNamed(context, Routes.home);
+                      }
+                    },
+                    child: const Text('Submit'),
+                  ),
+                ],
+              ),
             ),
           ),
         ),
@@ -113,6 +119,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       newValue,
                     )
                   : prefs.setString(userDataFieldKey, ""),
+              print(userDataFieldKey),
             },
             validator: (value) {
               if (value == null || value.isEmpty) {
