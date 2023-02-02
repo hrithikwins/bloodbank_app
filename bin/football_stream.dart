@@ -26,6 +26,7 @@ List<Map<String, dynamic>> footballScores = [
 
 Stream<String> getDataFromStream() async* {
   for (var i = 0; i < footballScores.length; i++) {
+    await Future.delayed(Duration(seconds: footballScores[i]["time"]));
     yield footballScores[i]["team"].toString();
   }
 }

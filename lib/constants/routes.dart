@@ -13,4 +13,5 @@ class Routes {
   static const String allMessages = "/all-messages";
   static const String donorsMap = '/donors-map';
   static const String messages = '/messages';
+  static const String footballScores = '/football';
 }
