@@ -20,6 +20,7 @@ import 'package:flutter/material.dart';
 
 import 'firebase_options.dart';
 import 'screens/splash_screen.dart';
+
 bool shouldUseFirestoreEmulator = false;
 
 Future<void> main() async {
@@ -43,17 +44,19 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
           primarySwatch: Colors.red,
           elevatedButtonTheme: ElevatedButtonThemeData(
-              style: ButtonStyle(
-                  // backgroundColor: MaterialStatePropertyAll(Color(0xA8FF0E0E))))
-                  backgroundColor: MaterialStateColor.resolveWith(
-            // ((states) => Color.fromARGB(168.3, 255, 14, 14)),
-            ((states) => Color(0xa8ff0e0e)),
-            // 255*0.6
-          )))
+            style: ButtonStyle(
+              // backgroundColor: MaterialStatePropertyAll(Color(0xA8FF0E0E))))
+              backgroundColor: MaterialStateColor.resolveWith(
+                // ((states) => Color.fromARGB(168.3, 255, 14, 14)),
+                ((states) => Color(0xa8ff0e0e)),
+                // 255*0.6
+              ),
+            ),
+          )
           // buttonTheme:
           ),
       // home: SplashScreen(),
-      initialRoute: Routes.home,
+      initialRoute: Routes.signUpScreen,
       routes: {
         Routes.splashScreen: (context) => SplashScreen(),
         Routes.onboardingScreen: (context) => OnboardingPage(),
