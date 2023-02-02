@@ -1,6 +1,11 @@
 void main() {
   print("Hello");
-  printStreamValues();
+
+  printStreamValues().listen(
+    (event) {
+      print(event);
+    },
+  );
 }
 
 List<Map<String, dynamic>> scores = [
@@ -25,7 +30,7 @@ List<Map<String, dynamic>> scores = [
 Stream<dynamic> printStreamValues() async* {
   for (int i = 0; i < scores.length; i++) {
     Future.delayed(
-      Duration(seconds: scores[i]['time']),
+      Duration(seconds: 10),
     );
     yield {"team": scores[i]['team']};
   }
