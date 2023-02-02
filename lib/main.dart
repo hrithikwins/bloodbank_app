@@ -54,7 +54,7 @@ class MyApp extends StatelessWidget {
           // buttonTheme:
           ),
       // home: SplashScreen(),
-      initialRoute: Routes.footballScores,
+      initialRoute: Routes.signUpScreen,
       routes: {
         Routes.splashScreen: (context) => SplashScreen(),
         Routes.onboardingScreen: (context) => OnboardingPage(),

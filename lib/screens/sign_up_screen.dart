@@ -22,6 +22,17 @@ class _SignUpScreenState extends State<SignUpScreen> {
       (DocumentReference doc) =>
           print('DocumentSnapshot added with ID: ${doc.id}'),
     );
+    // something after this would be executed only after the top await is done
+  }
+
+  Future<void> readDataFromFirestore() async {
+    await db.collection("users").get().then(
+      (QuerySnapshot querySnapshot) {
+        querySnapshot.docs.forEach((doc) {
+          print(doc.data());
+        });
+      },
+    );
   }
 
   Future<void> addDataToSharedPrefs() async {
@@ -87,6 +98,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   ElevatedButton(
                     onPressed: addDataToFirestore,
                     child: const Text('Add to Firestore'),
+                  ),
+                  ElevatedButton(
+                    onPressed: readDataFromFirestore,
+                    child: const Text('REad from Firestore'),
                   ),
                 ],
               ),
