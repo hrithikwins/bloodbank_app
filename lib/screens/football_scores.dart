@@ -28,7 +28,11 @@ List<Map<String, dynamic>> footballScores = [
   }
 ];
 
+List<String> data = [];
+// Timer to have a global count
+
 Stream<String> getDataFromStream() async* {
+  data = [];
   for (var i = 0; i < footballScores.length; i++) {
     await Future.delayed(Duration(seconds: footballScores[i]["time"]));
     yield footballScores[i]["team"].toString();
@@ -48,9 +52,11 @@ class _FootballScoresState extends State<FootballScores> {
                 return Center(
                   child: CircularProgressIndicator(),
                 );
-              } else if (snapshot.connectionState == ConnectionState.active) {
-                return Center(
-                  child: Text(snapshot.data.toString()),
+              } else if (snapshot.connectionState == ConnectionState.active ||
+                  snapshot.connectionState == ConnectionState.done) {
+                data.add(snapshot.data.toString());
+                return Column(
+                  children: data.map((e) => Text(e)).toList(),
                 );
               }
             } else {
