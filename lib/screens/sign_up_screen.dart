@@ -17,6 +17,16 @@ class _SignUpScreenState extends State<SignUpScreen> {
   late SharedPreferences prefs;
   FirebaseFirestore db = FirebaseFirestore.instance;
 
+  Future<void> readDataFromFirestore() async {
+    await db.collection("users").get().then(
+          (value) => value.docs.forEach(
+            (element) {
+              print(element.data());
+            },
+          ),
+        );
+  }
+
   Future<void> addDataToFirestore() async {
     await db.collection("users").add({"name": "Hrithik"}).then(
       (DocumentReference doc) =>
@@ -87,6 +97,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   ElevatedButton(
                     onPressed: addDataToFirestore,
                     child: const Text('Add to Firestore'),
+                  ),
+                  ElevatedButton(
+                    onPressed: readDataFromFirestore,
+                    child: const Text('Read from Firestore'),
                   ),
                 ],
               ),
