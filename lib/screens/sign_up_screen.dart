@@ -18,7 +18,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   FirebaseFirestore db = FirebaseFirestore.instance;
 
   Future<void> addDataToFirestore() async {
-    await db.collection("users").add({"name": "Hrithik"}).then(
+    await db.collection("users").add({"name": "Shreyash"}).then(
       (DocumentReference doc) =>
           print('DocumentSnapshot added with ID: ${doc.id}'),
     );
