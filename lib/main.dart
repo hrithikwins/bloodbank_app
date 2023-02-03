@@ -73,7 +73,7 @@ class MyApp extends StatelessWidget {
         Routes.allMessages: (context) => AllMessages(),
         Routes.donorsMap: (context) => DonorsMap(),
         Routes.messages: (context) => Messages(),
-        Routes.footballScreen: (context) => FootBallScoresScreen(),
+        Routes.footballScores: (context) => FootballScores(),
       },
     );
   }
