@@ -23,18 +23,30 @@ class _SignUpScreenState extends State<SignUpScreen> {
       print("Valid");
       _formKey.currentState!.save();
       // prefs.setString(key, value)
+
+      await createFirestoreData();
       Navigator.pushNamed(context, Routes.home);
     }
   }
 
   Future<void> createFirestoreData() async {
-    FireStoreMethods.addDataToFirestore("users", {
-      "name": prefs.getString(SharedPrefsConstant.name.toString()),
-      "dateOfBirth":
-          prefs.getString(SharedPrefsConstant.dateOfBirth.toString()),
-      "age": prefs.getString(SharedPrefsConstant.age.toString()),
-      "bloodGroup": prefs.getString(SharedPrefsConstant.bloodGroup.toString()),
-    });
+    var response = FireStoreMethods.updateOrCreateFirestoreData(
+      (prefs.getString(SharedPrefsConstant.name.toString()) ?? "No Name") +
+          DateTime.now().millisecondsSinceEpoch.toString(),
+      "users",
+      {
+        "name": prefs.getString(SharedPrefsConstant.name.toString()),
+        "dateOfBirth":
+            prefs.getString(SharedPrefsConstant.dateOfBirth.toString()),
+        "age": prefs.getString(SharedPrefsConstant.age.toString()),
+        "healthConditions":
+            prefs.getString(SharedPrefsConstant.healthConditions.toString()),
+        "bloodGroup":
+            prefs.getString(SharedPrefsConstant.bloodGroup.toString()),
+      },
+      isMerge: false,
+    );
+    debugPrint(response.toString());
   }
 
   @override

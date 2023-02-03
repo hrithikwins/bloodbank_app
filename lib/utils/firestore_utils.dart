@@ -39,4 +39,12 @@ class FireStoreMethods {
         .doc(id)
         .set(data, SetOptions(merge: isMerge));
   }
+
+  static Future<void> deleteData(String id, String collectionName) async {
+    await db
+        .collection(collectionName)
+        .doc(id)
+        .delete()
+        .then((value) => print("Deleted"));
+  }
 }

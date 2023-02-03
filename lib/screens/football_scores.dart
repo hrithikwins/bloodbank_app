@@ -46,7 +46,7 @@ class _FootballScoresState extends State<FootballScores> {
       body: SafeArea(
         child: StreamBuilder(
           stream: getDataFromStream(),
-          builder: (context, snapshot) {
+          builder: (BuildContext context, AsyncSnapshot snapshot) {
             if (snapshot.hasData) {
               if (snapshot.connectionState == ConnectionState.waiting) {
                 return Center(
