@@ -15,6 +15,7 @@ class SignUpScreen extends StatefulWidget {
 class _SignUpScreenState extends State<SignUpScreen> {
   final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
   final _formKey = GlobalKey<FormState>();
+  final _scaffoldKey = GlobalKey<ScaffoldState>();
   late SharedPreferences prefs;
   // FirebaseFirestore db = FirebaseFirestore.instance;
 
@@ -25,7 +26,17 @@ class _SignUpScreenState extends State<SignUpScreen> {
       // prefs.setString(key, value)
 
       await createFirestoreData();
-      Navigator.pushNamed(context, Routes.home);
+      _scaffoldKey.currentState?.showBottomSheet(
+        (context) => Container(
+          height: 100,
+          color: Colors.red,
+          child: Center(
+            child: Text("Data Saved"),
+          ),
+        ),
+      );
+
+      // Navigator.pushNamed(context, Routes.home);
     }
   }
 
@@ -64,6 +75,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _scaffoldKey,
       body: SafeArea(
         child: SingleChildScrollView(
           child: Container(

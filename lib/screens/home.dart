@@ -1,18 +1,27 @@
 import 'package:bloodbank_app/constants/colors.dart';
 import 'package:flutter/material.dart';
 
+import '../utils/network.dart';
+
 class Home extends StatelessWidget {
   const Home({super.key});
 
   @override
   Widget build(BuildContext context) {
     final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+
+    Future<void> getApiData() async {
+      // var response =
+      await Network.get("https://jsonplaceholder.typicode.com/todos/1");
+      // print(response);
+    }
     return Scaffold(
       key: _scaffoldKey,
       drawer: Drawer(
         child: ListView(
           children: [
-            Container(
+            ElevatedButton(
+              onPressed: getApiData,
               child: Text("Some text here"),
             ),
           ],
