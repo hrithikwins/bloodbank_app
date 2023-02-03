@@ -15,25 +15,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
   final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
   final _formKey = GlobalKey<FormState>();
   late SharedPreferences prefs;
-  FirebaseFirestore db = FirebaseFirestore.instance;
+  // FirebaseFirestore db = FirebaseFirestore.instance;
 
-  Future<void> addDataToFirestore() async {
-    await db.collection("users").add({"name": "Shreyash"}).then(
-      (DocumentReference doc) =>
-          print('DocumentSnapshot added with ID: ${doc.id}'),
-    );
-    // something after this would be executed only after the top await is done
-  }
-
-  Future<void> readDataFromFirestore() async {
-    await db.collection("users").get().then(
-      (QuerySnapshot querySnapshot) {
-        querySnapshot.docs.forEach((doc) {
-          print(doc.data());
-        });
-      },
-    );
-  }
 
   Future<void> addDataToSharedPrefs() async {
     if (_formKey.currentState!.validate()) {
@@ -95,14 +78,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     onPressed: addDataToSharedPrefs,
                     child: const Text('Submit'),
                   ),
-                  ElevatedButton(
-                    onPressed: addDataToFirestore,
-                    child: const Text('Add to Firestore'),
-                  ),
-                  ElevatedButton(
-                    onPressed: readDataFromFirestore,
-                    child: const Text('REad from Firestore'),
-                  ),
+                  // ElevatedButton(
+                  //   onPressed: addDataToFirestore,
+                  //   child: const Text('Add to Firestore'),
+                  // ),
+                  // ElevatedButton(
+                  //   onPressed: readDataFromFirestore,
+                  //   child: const Text('REad from Firestore'),
+                  // ),
                 ],
               ),
             ),
