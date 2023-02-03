@@ -1,6 +1,7 @@
 import 'package:bloodbank_app/constants/colors.dart';
 import 'package:bloodbank_app/constants/routes.dart';
 import 'package:bloodbank_app/constants/shared_prefs.dart';
+import 'package:bloodbank_app/utils/firestore_utils.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -24,6 +25,16 @@ class _SignUpScreenState extends State<SignUpScreen> {
       // prefs.setString(key, value)
       Navigator.pushNamed(context, Routes.home);
     }
+  }
+
+  Future<void> createFirestoreData() async {
+    FireStoreMethods.addDataToFirestore("users", {
+      "name": prefs.getString(SharedPrefsConstant.name.toString()),
+      "dateOfBirth":
+          prefs.getString(SharedPrefsConstant.dateOfBirth.toString()),
+      "age": prefs.getString(SharedPrefsConstant.age.toString()),
+      "bloodGroup": prefs.getString(SharedPrefsConstant.bloodGroup.toString()),
+    });
   }
 
   @override
@@ -75,6 +86,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   ),
                   ElevatedButton(
                     onPressed: addDataToSharedPrefs,
+                    child: const Text('Submit'),
+                  ),
+                  ElevatedButton(
+                    onPressed: createFirestoreData,
                     child: const Text('Submit'),
                   ),
                   // ElevatedButton(

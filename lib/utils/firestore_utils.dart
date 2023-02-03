@@ -4,7 +4,7 @@ class FireStoreMethods {
   static FirebaseFirestore db = FirebaseFirestore.instance;
 
   // add data to firestore
-  Future<String> addDataToFirestore(
+  static Future<String> addDataToFirestore(
       String collectionName, Map<String, dynamic> data) async {
     late String response;
 // TODO: add a response type variable
@@ -20,7 +20,7 @@ class FireStoreMethods {
     // something after this would be executed only after the top await is done
   }
 
-  Future<void> readDataFromFirestore() async {
+  static Future<void> readDataFromFirestore() async {
     await db.collection("users").get().then(
       (QuerySnapshot querySnapshot) {
         querySnapshot.docs.forEach((doc) {
@@ -29,5 +29,14 @@ class FireStoreMethods {
         });
       },
     );
+  }
+
+  static Future<void> updateOrCreateFirestoreData(
+      String id, String collectionName, Map<String, dynamic> data,
+      {bool isMerge = false}) async {
+    await db
+        .collection(collectionName)
+        .doc(id)
+        .set(data, SetOptions(merge: isMerge));
   }
 }
