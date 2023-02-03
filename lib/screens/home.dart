@@ -1,6 +1,7 @@
 import 'package:bloodbank_app/constants/colors.dart';
 import 'package:flutter/material.dart';
 
+import '../constants/images.dart';
 import '../utils/network.dart';
 
 class Home extends StatelessWidget {
@@ -15,6 +16,7 @@ class Home extends StatelessWidget {
       await Network.get("https://jsonplaceholder.typicode.com/todos/1");
       // print(response);
     }
+
     return Scaffold(
       key: _scaffoldKey,
       drawer: Drawer(
@@ -37,7 +39,7 @@ class Home extends StatelessWidget {
       ),
       body: Container(
         color: MyColors.redPrimary,
-        width: double.infinity,
+        // width: double.infinity,
         child: Column(
           children: [
             Container(
@@ -91,12 +93,38 @@ class Home extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Column(
-            children: const [
+            children: [
               Text(
                 "Hello World",
               ),
-              Text(
-                "Hello World",
+              Stack(
+                fit: StackFit.loose,
+                alignment: Alignment.center,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 32.0),
+                    child: Image.asset(
+                      Resources.bloodDrop,
+                      fit: BoxFit.fitWidth,
+                    ),
+                  ),
+                  Positioned(
+                    top: 10,
+                    left: 0,
+                    right: 0,
+                    bottom: 0,
+                    child: Center(
+                      child: Text(
+                        "A+",
+                        style: TextStyle(
+                          fontSize: 50.0,
+                          color: Colors.white,
+                          fontWeight: FontWeight.w800,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ],
           ),
