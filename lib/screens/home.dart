@@ -28,8 +28,9 @@ class _HomeState extends State<Home> {
 
   void onInit() async {
     prefs = await SharedPreferences.getInstance();
-
-    _bloodGroup = prefs.getString(SharedPrefsConstant.bloodGroup.toString());
+    setState(() {
+      _bloodGroup = prefs.getString(SharedPrefsConstant.bloodGroup.toString());
+    });
   }
 
   @override
@@ -90,16 +91,26 @@ class _HomeState extends State<Home> {
   Widget bloodDonationInfoWidget(context) {
     return SizedBox(
       width: MediaQuery.of(context).size.width * 0.41,
+      height: 236,
       child: Card(
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: const [
               Text(
                 "Hello World",
               ),
+              Icon(
+                Icons.check_circle,
+                size: 93,
+                color: MyColors.greenLight,
+              ),
               Text(
-                "Hello World",
+                "You can Donate!",
+                style: TextStyle(
+                  color: Colors.blueGrey,
+                ),
               ),
             ],
           ),
@@ -113,43 +124,50 @@ class _HomeState extends State<Home> {
     return SizedBox(
       width: MediaQuery.of(context).size.width * 0.41,
       child: Card(
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Column(
-            children: [
-              Text(
-                "Hello World",
-              ),
-              Stack(
-                fit: StackFit.loose,
-                alignment: Alignment.center,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 32.0),
-                    child: Image.asset(
-                      Resources.bloodDrop,
-                      fit: BoxFit.fitWidth,
-                    ),
+        child: SizedBox(
+          height: 236,
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(top: 19.0),
+                  child: Text(
+                    "Hello World",
                   ),
-                  Positioned(
-                    top: 10,
-                    left: 0,
-                    right: 0,
-                    bottom: 0,
-                    child: Center(
-                      child: Text(
-                        _bloodGroup.toString(),
-                        style: TextStyle(
-                          fontSize: 50.0,
-                          color: Colors.white,
-                          fontWeight: FontWeight.w800,
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 34.0),
+                  child: Stack(
+                    fit: StackFit.loose,
+                    alignment: Alignment.center,
+                    children: [
+                      Image.asset(
+                        Resources.bloodDrop,
+                        fit: BoxFit.fitWidth,
+                      ),
+                      Positioned(
+                        top: 10,
+                        left: 0,
+                        right: 0,
+                        bottom: 0,
+                        child: Center(
+                          child: Text(
+                            _bloodGroup.toString(),
+                            style: TextStyle(
+                              fontSize: 50.0,
+                              color: Colors.white,
+                              fontWeight: FontWeight.w800,
+                            ),
+                          ),
                         ),
                       ),
-                    ),
+                    ],
                   ),
-                ],
-              ),
-            ],
+                ),
+              ],
+            ),
           ),
         ),
       ),
