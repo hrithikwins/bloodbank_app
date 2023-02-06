@@ -46,6 +46,7 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.red,
           elevatedButtonTheme: ElevatedButtonThemeData(
             style: ButtonStyle(
+              fixedSize: MaterialStateProperty.all(Size(double.infinity, 53)),
               // backgroundColor: MaterialStatePropertyAll(Color(0xA8FF0E0E))))
               backgroundColor: MaterialStateColor.resolveWith(
                 // ((states) => Color.fromARGB(168.3, 255, 14, 14)),

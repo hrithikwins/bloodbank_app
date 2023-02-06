@@ -1,4 +1,5 @@
 import 'package:bloodbank_app/constants/colors.dart';
+import 'package:bloodbank_app/constants/routes.dart';
 import 'package:bloodbank_app/constants/shared_prefs.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -17,6 +18,7 @@ class _HomeState extends State<Home> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   late SharedPreferences prefs;
   String? _bloodGroup;
+  String? name;
 
   @override
   void initState() {
@@ -29,26 +31,84 @@ class _HomeState extends State<Home> {
   void onInit() async {
     prefs = await SharedPreferences.getInstance();
     setState(() {
+      name = prefs.getString(SharedPrefsConstant.name);
       _bloodGroup = prefs.getString(SharedPrefsConstant.bloodGroup.toString());
     });
   }
 
+  Future<void> getApiData() async {
+    // var response =
+    await Network.get("https://jsonplaceholder.typicode.com/todos/1");
+    // print(response);
+  }
+
   @override
   Widget build(BuildContext context) {
-    Future<void> getApiData() async {
-      // var response =
-      await Network.get("https://jsonplaceholder.typicode.com/todos/1");
-      // print(response);
-    }
-
     return Scaffold(
       key: _scaffoldKey,
       drawer: Drawer(
         child: ListView(
           children: [
+            Container(
+              height: 163,
+              width: double.infinity,
+              color: MyColors.redAccentLight,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.end,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Container(
+                    width: 86,
+                    height: 82,
+                    child:
+                        Image.asset(Resources.bloodHeart, fit: BoxFit.fitWidth),
+                  ),
+                  Text(
+                    "Donor #32457",
+                    style: TextStyle(
+                      fontSize: 18,
+                    ),
+                  ),
+                  Text(
+                    "Donor Status : Approved",
+                    style: TextStyle(
+                      fontSize: 12,
+                    ),
+                  ),
+                  SizedBox(height: 16),
+                ],
+              ),
+            ),
+            // list tie here
+            ...[
+              "Messages",
+              "Requests",
+              "History",
+              "Settings",
+            ]
+                .map((e) => ListTile(
+                      trailing: Icon(
+                        Icons.keyboard_arrow_right_outlined,
+                      ),
+                      title: Text(e),
+                      onTap: () {
+                        Navigator.pop(context);
+                      },
+                    ))
+                .toList(),
+
+            // ListTile(
+            //   trailing: Icon(
+            //     Icons.keyboard_arrow_right_outlined,
+            //   ),
+            //   title: Text("Home"),
+            //   onTap: () {
+            //     Navigator.pop(context);
+            //   },
+            // ),
             ElevatedButton(
               onPressed: getApiData,
-              child: Text("Some text here"),
+              child: Text("Sign Out"),
             ),
           ],
         ),
@@ -65,23 +125,56 @@ class _HomeState extends State<Home> {
         color: MyColors.redPrimary,
         // width: double.infinity,
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Container(
-              margin: EdgeInsets.all(29.0),
-              child: Text(
-                "Hello Hrithik",
-                style: TextStyle(
-                  color: Colors.white,
-                ),
-              ),
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            Column(
               children: [
-                bloodGroupInfoWidget(context),
-                bloodDonationInfoWidget(context),
+                Container(
+                  margin: EdgeInsets.all(29.0),
+                  child: Text(
+                    "Hello $name",
+                    style: TextStyle(
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    bloodGroupInfoWidget(context),
+                    bloodDonationInfoWidget(context),
+                  ],
+                ),
               ],
-            )
+            ),
+            Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 24.0),
+                  child: SizedBox(
+                      width: double.infinity,
+                      child: ElevatedButton(
+                          onPressed: () =>
+                              Navigator.pushNamed(context, Routes.findDonors),
+                          child: Text("Find Donors"))),
+                ),
+                SizedBox(
+                  height: 24,
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 24.0),
+                  child: SizedBox(
+                      width: double.infinity,
+                      child: ElevatedButton(
+                          onPressed: () => Navigator.pushNamed(
+                              context, Routes.incomingRequests),
+                          child: Text("Donate Blood"))),
+                ),
+                SizedBox(
+                  height: 24,
+                ),
+              ],
+            ),
           ],
         ),
       ),
