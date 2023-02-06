@@ -1,7 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class FireStoreMethods {
   static FirebaseFirestore db = FirebaseFirestore.instance;
+  // static UserCredential userCredential;
 
   // add data to firestore
   static Future<String> addDataToFirestore(
@@ -40,10 +42,7 @@ class FireStoreMethods {
   static Future<void> updateOrCreateFirestoreData(
       String id, String collectionName, Map<String, dynamic> data,
       {bool isMerge = false}) async {
-    await db
-        .collection(collectionName)
-        .doc(id)
-        .set(
+    await db.collection(collectionName).doc(id).set(
         data,
         SetOptions(
             merge: isMerge)); // merge FALSE -> PUT .... merge TRUE -> PATCH
