@@ -190,25 +190,14 @@ class _HomeState extends State<Home> {
           padding: const EdgeInsets.all(8.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: const [
               Text(
                 "Donor Status",
               ),
               Icon(
                 Icons.check_circle,
-                color: Colors.green,
+                color: MyColors.greenLight,
                 size: 93.0,
-              ),
-              Icon(
-                Icons.check_circle,
-                size: 93,
-                color: MyColors.greenLight,
-              ),
-              Icon(
-                Icons.check_circle,
-                size: 93,
-                color: MyColors.greenLight,
               ),
               Text(
                 "You can Donate!",
