@@ -1,16 +1,39 @@
 import 'package:bloodbank_app/constants/colors.dart';
+import 'package:bloodbank_app/constants/shared_prefs.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../constants/images.dart';
 import '../utils/network.dart';
 
-class Home extends StatelessWidget {
+class Home extends StatefulWidget {
   const Home({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+  State<Home> createState() => _HomeState();
+}
 
+class _HomeState extends State<Home> {
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+  late SharedPreferences prefs;
+  String? _bloodGroup;
+
+  @override
+  void initState() {
+    super.initState();
+    onInit();
+    // getApiData();
+    // getSharedPrefsData();
+  }
+
+  void onInit() async {
+    prefs = await SharedPreferences.getInstance();
+
+    _bloodGroup = prefs.getString(SharedPrefsConstant.bloodGroup.toString());
+  }
+
+  @override
+  Widget build(BuildContext context) {
     Future<void> getApiData() async {
       // var response =
       await Network.get("https://jsonplaceholder.typicode.com/todos/1");
@@ -115,7 +138,7 @@ class Home extends StatelessWidget {
                     bottom: 0,
                     child: Center(
                       child: Text(
-                        "A+",
+                        _bloodGroup.toString(),
                         style: TextStyle(
                           fontSize: 50.0,
                           color: Colors.white,

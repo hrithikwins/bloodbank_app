@@ -13,7 +13,7 @@ class SignUpScreen extends StatefulWidget {
 }
 
 class _SignUpScreenState extends State<SignUpScreen> {
-  final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
+  // final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
   final _formKey = GlobalKey<FormState>();
   final _scaffoldKey = GlobalKey<ScaffoldState>();
   late SharedPreferences prefs;
