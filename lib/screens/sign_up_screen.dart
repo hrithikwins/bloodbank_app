@@ -31,7 +31,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
           height: 100,
           color: Colors.red,
           child: Center(
-            child: Text("Data Saved"),
+            child: ElevatedButton(
+              onPressed: () => Navigator.pushNamed(context, Routes.home),
+              child: Text("OK"),
+            ),
           ),
         ),
       );
@@ -88,25 +91,23 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 children: [
                   textFieldWithLabel(
                     "Your Name",
-                    userDataFieldKey: SharedPrefsConstant.name.toString(),
+                    userDataFieldKey: SharedPrefsConstant.name,
                   ),
                   textFieldWithLabel(
                     "Date of Birth",
-                    userDataFieldKey:
-                        SharedPrefsConstant.dateOfBirth.toString(),
+                    userDataFieldKey: SharedPrefsConstant.dateOfBirth,
                   ),
                   textFieldWithLabel(
                     "Age",
-                    userDataFieldKey: SharedPrefsConstant.age.toString(),
+                    userDataFieldKey: SharedPrefsConstant.age,
                   ),
                   textFieldWithLabel(
                     "Prevailing Health Conditions",
-                    userDataFieldKey:
-                        SharedPrefsConstant.healthConditions.toString(),
+                    userDataFieldKey: SharedPrefsConstant.healthConditions,
                   ),
                   textFieldWithLabel(
                     "Blood Group",
-                    userDataFieldKey: SharedPrefsConstant.bloodGroup.toString(),
+                    userDataFieldKey: SharedPrefsConstant.bloodGroup,
                   ),
                   ElevatedButton(
                     onPressed: addDataToSharedPrefs,
@@ -114,7 +115,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   ),
                   ElevatedButton(
                     onPressed: createFirestoreData,
-                    child: const Text('Submit'),
+                    child: const Text('Firestore'),
                   ),
                   // ElevatedButton(
                   //   onPressed: addDataToFirestore,

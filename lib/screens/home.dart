@@ -28,8 +28,9 @@ class _HomeState extends State<Home> {
 
   void onInit() async {
     prefs = await SharedPreferences.getInstance();
-
-    _bloodGroup = prefs.getString(SharedPrefsConstant.bloodGroup.toString());
+    setState(() {
+      _bloodGroup = prefs.getString(SharedPrefsConstant.bloodGroup.toString());
+    });
   }
 
   @override

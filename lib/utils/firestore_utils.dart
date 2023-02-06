@@ -5,14 +5,18 @@ class FireStoreMethods {
 
   // add data to firestore
   static Future<String> addDataToFirestore(
-      String collectionName, Map<String, dynamic> data) async {
+    String collectionName,
+    Map<String, dynamic> data,
+  ) async {
     late String response;
-// TODO: add a response type variable
+// FIXME: add a response type variable
     await db
         .collection(collectionName)
         .add(data)
         .then(
-          (DocumentReference doc) => {response = doc.id},
+          (DocumentReference doc) => {
+            response = doc.id,
+          },
         )
         .catchError((onError) => {response = onError.toString()});
 
