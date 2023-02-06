@@ -42,6 +42,7 @@ dependencies:
   logger: ^1.1.0
   cloud_firestore: ^4.3.1
   http: ^0.13.5
+  device_preview: ^1.1.0
 
 dev_dependencies:
   flutter_test:

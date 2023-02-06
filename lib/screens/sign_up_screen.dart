@@ -93,25 +93,23 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 children: [
                   textFieldWithLabel(
                     "Your Name",
-                    userDataFieldKey: SharedPrefsConstant.name.toString(),
+                    userDataFieldKey: SharedPrefsConstant.name,
                   ),
                   textFieldWithLabel(
                     "Date of Birth",
-                    userDataFieldKey:
-                        SharedPrefsConstant.dateOfBirth.toString(),
+                    userDataFieldKey: SharedPrefsConstant.dateOfBirth,
                   ),
                   textFieldWithLabel(
                     "Age",
-                    userDataFieldKey: SharedPrefsConstant.age.toString(),
+                    userDataFieldKey: SharedPrefsConstant.age,
                   ),
                   textFieldWithLabel(
                     "Prevailing Health Conditions",
-                    userDataFieldKey:
-                        SharedPrefsConstant.healthConditions.toString(),
+                    userDataFieldKey: SharedPrefsConstant.healthConditions,
                   ),
                   textFieldWithLabel(
                     "Blood Group",
-                    userDataFieldKey: SharedPrefsConstant.bloodGroup.toString(),
+                    userDataFieldKey: SharedPrefsConstant.bloodGroup,
                   ),
                   ElevatedButton(
                     onPressed: addDataToSharedPrefs,
