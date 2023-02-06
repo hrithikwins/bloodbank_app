@@ -91,17 +91,20 @@ class _HomeState extends State<Home> {
   Widget bloodDonationInfoWidget(context) {
     return SizedBox(
       width: MediaQuery.of(context).size.width * 0.41,
+      height: 238,
       child: Card(
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Column(
             children: const [
               Text(
-                "Hello World",
+                "Donor Status",
               ),
-              Text(
-                "Hello World",
-              ),
+              Icon(
+                Icons.check_circle,
+                color: Colors.green,
+                size: 93.0,
+              )
             ],
           ),
         ),
