@@ -54,20 +54,18 @@ class FindDonors extends StatelessWidget {
               // Down Arrow Icon
               icon: const Icon(Icons.keyboard_arrow_down),
 
-              // // Array list of items
-              // items: items.map((String items) {
-              //   return DropdownMenuItem(
-              //     value: items,
-              //     child: Text(items),
-              //   );
-              // }).toList(),
-              // items from 18 to 60
-              items: ( for(int i = 18; i <= 60; i++ ){
-                return DropDownMenuItem(
-                  value: i,
-                  Text(i.toString())
-                )
-              }),
+              items: [
+                DropdownMenuItem(
+                  child: Text("Select Age"),
+                  value: "Select Age",
+                ),
+                for (int i = 18; i <= 60; i++)
+                  DropdownMenuItem(
+                    child: Text(i.toString()),
+                    value: i,
+                  )
+              ],
+              onChanged: (value) {},
               // After selecting the desired option,it will
               // change button value to selected value
               // onChanged: (String? newValue) {
