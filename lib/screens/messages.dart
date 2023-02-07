@@ -26,6 +26,7 @@ class Messages extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Container(
+                  padding: EdgeInsets.only(left: 10),
                   child: Text(
                     "Donor #1892893",
                     style: TextStyle(
