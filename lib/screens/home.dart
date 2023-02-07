@@ -106,7 +106,7 @@ class _HomeState extends State<Home> {
             //     Navigator.pop(context);
             //   },
             // ),
-            ElevatedButton(
+            TextButton(
               onPressed: getApiData,
               child: Text("Sign Out"),
             ),
@@ -122,31 +122,40 @@ class _HomeState extends State<Home> {
             icon: Icon(Icons.menu)),
       ),
       body: Container(
-        color: MyColors.redPrimary,
+        // color: MyColors.redPrimary,
         // width: double.infinity,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Column(
-              children: [
-                Container(
-                  margin: EdgeInsets.all(29.0),
-                  child: Text(
-                    "Hello $name",
-                    style: TextStyle(
-                      color: Colors.white,
-                    ),
+            Stack(
+                // clipper: MyClipper(),
+                children: [
+                  Container(
+                    color: MyColors.redPrimary,
+                    height: 245,
+                    width: double.infinity,
                   ),
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    bloodGroupInfoWidget(context),
-                    bloodDonationInfoWidget(context),
-                  ],
-                ),
-              ],
-            ),
+                  Column(
+                    children: [
+                      Container(
+                        margin: EdgeInsets.all(29.0),
+                        child: Text(
+                          "Hello $name",
+                          style: TextStyle(
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          bloodGroupInfoWidget(context),
+                          bloodDonationInfoWidget(context),
+                        ],
+                      ),
+                    ],
+                  ),
+                ]),
             Column(
               children: [
                 Padding(
@@ -267,3 +276,24 @@ class _HomeState extends State<Home> {
     );
   }
 }
+
+
+// class MyClipper extends CustomClipper<Path> {
+//   @override
+//   Path getClip(Size size) {
+//     double height = size.height;
+//     double width = size.width;
+
+//     var path = Path();
+//     path.lineTo(0, height - 50);
+//     path.quadraticBezierTo(width / 2, height, width, height - 50);
+//     path.lineTo(width, 0);
+//     path.close();
+//     return path;
+//   }
+
+//   @override
+//   bool shouldReclip(covariant CustomClipper<Path> oldClipper) {
+//     return true;
+//   }
+// }
