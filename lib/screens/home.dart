@@ -86,14 +86,20 @@ class _HomeState extends State<Home> {
               "History",
               "Settings",
             ]
-                .map((e) => ListTile(
-                      trailing: Icon(
-                        Icons.keyboard_arrow_right_outlined,
-                      ),
-                      title: Text(e),
-                      onTap: () {
-                        Navigator.pop(context);
-                      },
+                .map((e) => Column(
+                      children: [
+                        ListTile(
+                          trailing: Icon(
+                            Icons.keyboard_arrow_right_outlined,
+                            color: MyColors.redPrimary,
+                          ),
+                          title: Text(e),
+                          onTap: () {
+                            Navigator.pop(context);
+                          },
+                        ),
+                        Divider(),
+                      ],
                     ))
                 .toList(),
 
@@ -114,6 +120,7 @@ class _HomeState extends State<Home> {
         ),
       ),
       appBar: AppBar(
+        elevation: 0,
         leading: IconButton(
             onPressed: () {
               // Scaffold.of(context).openDrawer();
@@ -122,27 +129,36 @@ class _HomeState extends State<Home> {
             icon: Icon(Icons.menu)),
       ),
       body: Container(
-        color: MyColors.redPrimary,
+        // color: MyColors.redPrimary,
         // width: double.infinity,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Column(
+            Stack(
               children: [
                 Container(
-                  margin: EdgeInsets.all(29.0),
-                  child: Text(
-                    "Hello $name",
-                    style: TextStyle(
-                      color: Colors.white,
-                    ),
-                  ),
+                  height: 245,
+                  width: double.infinity,
+                  color: MyColors.redPrimary,
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                Column(
                   children: [
-                    bloodGroupInfoWidget(context),
-                    bloodDonationInfoWidget(context),
+                    Container(
+                      margin: EdgeInsets.all(29.0),
+                      child: Text(
+                        "Hello $name",
+                        style: TextStyle(
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        bloodGroupInfoWidget(context),
+                        bloodDonationInfoWidget(context),
+                      ],
+                    ),
                   ],
                 ),
               ],
