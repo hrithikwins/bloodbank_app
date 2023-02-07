@@ -1,4 +1,4 @@
-const bloodGroup = [
+const bloodGroups = [
   "A+",
   "A-",
   "B+",

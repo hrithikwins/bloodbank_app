@@ -1,6 +1,8 @@
-import 'package:bloodbank_app/constants/data_constants.dart';
-import 'package:bloodbank_app/widgets/title_widget.dart';
+import 'package:bloodbank_app/constants/blood_groups.dart';
+import 'package:bloodbank_app/widgets/title_widgets.dart';
 import 'package:flutter/material.dart';
+
+import '../constants/routes.dart';
 
 class FindDonors extends StatelessWidget {
   const FindDonors({super.key});
@@ -9,57 +11,73 @@ class FindDonors extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Find Donors"),
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
+        title: const Text('Find Donors'),
       ),
-      body: Column(
+      body: ListView(
         children: [
           titleWithWidget(
-            "Blood Group",
-            Expanded(
+            "Patient Blood Type",
+            SizedBox(
+              height: 100,
+              width: double.infinity,
               child: GridView.count(
                 crossAxisCount: 7,
-                children: bloodGroup
-                    .map(
-                      (e) => Text(
-                        e,
-                      ),
-                    )
+                children: bloodGroups
+                    .map((e) => Container(
+                          child: Text(e),
+                        ))
                     .toList(),
               ),
             ),
           ),
           titleWithWidget(
-              "Patient Gender",
-              Row(
-                children: [
-                  Text("Male"),
-                  Text("Female"),
-                ],
-              )),
+            "Patient Gender",
+            Row(
+              children: [
+                Container(
+                  child: Text("Male"),
+                ),
+                Container(
+                  child: Text("Female"),
+                ),
+              ],
+            ),
+          ),
           titleWithWidget(
               "Patient Relation",
               Row(
                 children: [
-                  Text("Family"),
-                  Text("Friend"),
-                  Text("Other"),
+                  Container(
+                    child: Text("Family"),
+                  ),
+                  Container(
+                    child: Text("Friend"),
+                  ),
+                  Container(
+                    child: Text("Other"),
+                  ),
                 ],
               )),
           titleWithWidget(
-            "Patient's Age",
+            "Patient Age",
             DropdownButton(
               // Initial Value
               value: "Select Age",
-
               // Down Arrow Icon
               icon: const Icon(Icons.keyboard_arrow_down),
-
+              // Array of age from 18 to 60
               items: [
                 DropdownMenuItem(
                   child: Text("Select Age"),
                   value: "Select Age",
                 ),
-                for (int i = 18; i <= 60; i++)
+                for (var i = 18; i <= 60; i++)
                   DropdownMenuItem(
                     child: Text(i.toString()),
                     value: i,
@@ -74,23 +92,26 @@ class FindDonors extends StatelessWidget {
               //   });
               // },
             ),
+            flex: Axis.horizontal,
+          ),
+          ElevatedButton(
+            onPressed: () => {Navigator.pushNamed(context, Routes.donorsMap)},
+            child: Text("Find Donors"),
           ),
         ],
       ),
     );
   }
 
-  Expanded titleWithWidget(String title, Widget widget) {
-    return Expanded(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          TitleWidget(
-            title,
-          ),
-          widget
-        ],
-      ),
+  Flex titleWithWidget(String title, Widget widget,
+      {Axis flex = Axis.vertical}) {
+    return Flex(
+      direction: flex,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        TitleWidget(title),
+        widget,
+      ],
     );
   }
 }
