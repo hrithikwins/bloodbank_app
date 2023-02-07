@@ -81,18 +81,30 @@ class _HomeState extends State<Home> {
             ),
             // list tie here
             ...[
-              "Messages",
-              "Requests",
-              "History",
-              "Settings",
+              {
+                "route": Routes.allMessages,
+                "name": "Messages",
+              },
+              {
+                "route": Routes.incomingRequests,
+                "name": "Requests",
+              },
+              {
+                "route": Routes.history,
+                "name": "History",
+              },
+              {
+                "route": Routes.home,
+                "name": "Settings",
+              },
             ]
                 .map((e) => ListTile(
                       trailing: Icon(
                         Icons.keyboard_arrow_right_outlined,
                       ),
-                      title: Text(e),
+                      title: Text(e["name"].toString()),
                       onTap: () {
-                        Navigator.pop(context);
+                        Navigator.pushNamed(context, e["route"].toString());
                       },
                     ))
                 .toList(),
