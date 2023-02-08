@@ -50,3 +50,4 @@ lib/firebase_options.dart
 macos/firebase_app_id_file.json
 ios/Runner/GoogleService-Info.plist
 macos/Runner/GoogleService-Info.plist
+md.md

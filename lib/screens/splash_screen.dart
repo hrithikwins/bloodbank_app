@@ -14,7 +14,7 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen>
-    with SingleTickerProviderStateMixin {
+    with TickerProviderStateMixin {
   late AnimationController animationController;
   @override
   void initState() {
@@ -25,7 +25,9 @@ class _SplashScreenState extends State<SplashScreen>
     // TODO: implement initState
     animationController = AnimationController(
       vsync: this,
-      duration: Duration(seconds: 3),
+      duration: Duration(
+        seconds: 10,
+      ),
     );
     animationController.forward();
     super.initState();
@@ -52,9 +54,11 @@ class _SplashScreenState extends State<SplashScreen>
             child: Image.asset(
               "assets/bloodbank.png",
             ),
-            builder: (context, child) => Transform.rotate(
+            builder: (context, child) => Transform(
               // offset: Offset(-100, 10),
-              angle: animationController.value * 0.3 * math.pi,
+              transform: Matrix4.skewY(animationController.value * 0.6),
+
+              // angle: animationController.value * 0.3 * math.pi,
               // angle: math.pi / 4,
               // angle: math.pi,
               // origin: Offset(100, 10),
