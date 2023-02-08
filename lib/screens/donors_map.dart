@@ -18,7 +18,7 @@ class DonorsMap extends StatelessWidget {
         children: [
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: MyTitleWidgets.titleWidget("Find Donors in your Area"),
+            child: MyTitleWidgets.simpleTitle("Find Donors in your Area"),
           ),
           Center(
             child: SizedBox(

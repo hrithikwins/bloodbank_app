@@ -3,10 +3,11 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 
 class MyTitleWidgets {
-  static Widget titleWidget(
+  static Widget simpleTitle(
     String title, {
     int fontSize = 14,
     Color color = Colors.black,
+    FontWeight fontWeight = FontWeight.w600,
   }) {
     return Container(
       child: Padding(
@@ -16,7 +17,7 @@ class MyTitleWidgets {
           style: TextStyle(
             fontSize: fontSize.toDouble(),
             color: color,
-            fontWeight: FontWeight.w600,
+            fontWeight: fontWeight,
           ),
         ),
       ),

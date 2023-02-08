@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 
+import '../constants/button_theme.dart';
+import '../constants/colors.dart';
+import '../widgets/title_widgets.dart';
+
 class History extends StatelessWidget {
   const History({super.key});
 
@@ -22,27 +26,40 @@ class History extends StatelessWidget {
                       (e) => Column(
                         children: [
                           Container(
+                            padding: EdgeInsets.symmetric(
+                              vertical: 4,
+                              horizontal: 8,
+                            ),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Container(
-                                      child: Text(e),
+                                      child: MyTitleWidgets.simpleTitle(
+                                        e,
+                                        fontSize: 18,
+                                      ),
                                     ),
-                                    Container(
-                                      child: Text("View Details"),
-                                    )
+                                    MyTitleWidgets.simpleTitle(
+                                      e,
+                                      color: MyColors.redPrimary,
+                                      fontWeight: FontWeight.w400,
+                                    ),
                                   ],
                                 ),
                                 Column(
                                   children: [
-                                    Container(
-                                      child: Text("Accept"),
+                                    ButtonThemes.redRoundedButton(
+                                      "Accept",
+                                      null,
                                     ),
-                                    Container(
-                                      child: Text("Decline"),
-                                    )
+                                    SizedBox(
+                                      height: 8,
+                                    ),
+                                    ButtonThemes.transparentRoundedButton(
+                                        "Delete", null),
                                   ],
                                 ),
                               ],
