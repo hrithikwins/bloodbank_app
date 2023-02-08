@@ -1,5 +1,6 @@
 // ignore_for_file: unused_import, prefer_const_constructors
 
+import 'package:bloodbank_app/constants/colors.dart';
 import 'package:bloodbank_app/constants/routes.dart';
 import 'package:bloodbank_app/screens/all_messages.dart';
 import 'package:bloodbank_app/screens/donors_map.dart';
@@ -55,6 +56,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Blood Bank App',
       theme: ThemeData(
+        appBarTheme: AppBarTheme(
+          color: MyColors.redPrimary,
+          elevation: 0,
+        ),
         primarySwatch: Colors.red,
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ButtonStyle(
@@ -87,7 +92,7 @@ class MyApp extends StatelessWidget {
         // buttonTheme:
       ),
       // home: SplashScreen(),
-      initialRoute: Routes.loading,
+      initialRoute: Routes.home,
       routes: {
         "/splash": (context) => SplashScreen(),
         Routes.onboardingScreen: (context) => OnboardingPage(),

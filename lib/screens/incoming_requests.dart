@@ -28,9 +28,7 @@ class IncomingRequests extends StatelessWidget {
                         ),
                         Column(
                           children: [
-                            Container(
-                              child: Text("Accept"),
-                            ),
+                            // borderedButton(),
                             Container(
                               child: Text("Decline"),
                             )
@@ -45,6 +43,12 @@ class IncomingRequests extends StatelessWidget {
             )
             .toList(),
       ),
+    );
+  }
+
+  Container borderedButton(double height, double width, Color color) {
+    return Container(
+      child: Text("Accept"),
     );
   }
 }
