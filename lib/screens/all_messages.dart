@@ -17,44 +17,53 @@ class AllMessages extends StatelessWidget {
         children: [
           Expanded(
             child: SingleChildScrollView(
-              child: Column(
-                children: ["Requester #3982", "Requester #893"]
-                    .map(
-                      (e) => Column(
-                        children: [
-                          Container(
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Column(
-                                  children: [
-                                    Container(
-                                      child: Text(e),
-                                    ),
-                                    Container(
-                                      child: Text("View Details"),
-                                    )
-                                  ],
-                                ),
-                                IconButton(
-                                  icon: Icon(
-                                    Icons.keyboard_arrow_right_sharp,
+              child: Padding(
+                padding:
+                    const EdgeInsets.symmetric(vertical: 4.0, horizontal: 8),
+                child: Column(
+                  children: ["Donor #3982", "Donor #893"]
+                      .map(
+                        (e) => Column(
+                          children: [
+                            Container(
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Container(
+                                        child: Text(e),
+                                      ),
+                                      Container(
+                                        child: Text(
+                                          "Hello, I am available",
+                                        ),
+                                      )
+                                    ],
                                   ),
-                                  onPressed: () {
-                                    Navigator.pushNamed(
-                                      context,
-                                      Routes.messages,
-                                    );
-                                  },
-                                ),
-                              ],
+                                  IconButton(
+                                    icon: Icon(
+                                      Icons.keyboard_arrow_right_sharp,
+                                    ),
+                                    onPressed: () {
+                                      Navigator.pushNamed(
+                                        context,
+                                        Routes.messages,
+                                      );
+                                    },
+                                  ),
+                                ],
+                              ),
                             ),
-                          ),
-                          Divider(),
-                        ],
-                      ),
-                    )
-                    .toList(),
+                            Divider(),
+                          ],
+                        ),
+                      )
+                      .toList(),
+                ),
               ),
             ),
           ),

@@ -10,15 +10,12 @@ class MyTitleWidgets {
     FontWeight fontWeight = FontWeight.w600,
   }) {
     return Container(
-      child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 16.0),
-        child: Text(
-          title,
-          style: TextStyle(
-            fontSize: fontSize.toDouble(),
-            color: color,
-            fontWeight: fontWeight,
-          ),
+      child: Text(
+        title,
+        style: TextStyle(
+          fontSize: fontSize.toDouble(),
+          color: color,
+          fontWeight: fontWeight,
         ),
       ),
     );
