@@ -109,7 +109,7 @@ class FindDonors extends StatelessWidget {
       direction: flex,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        MyTitleWidgets.simpleTitle(title),
+        MyTitleWidgets.titleWidget(title),
         widget,
       ],
     );

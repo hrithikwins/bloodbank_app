@@ -25,12 +25,12 @@ class IncomingRequests extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Container(
-                              child: MyTitleWidgets.simpleTitle(
+                              child: MyTitleWidgets.titleWidget(
                                 e,
                                 fontSize: 18,
                               ),
                             ),
-                            MyTitleWidgets.simpleTitle(
+                            MyTitleWidgets.titleWidget(
                               e,
                               color: MyColors.redPrimary,
                               fontWeight: FontWeight.w400,

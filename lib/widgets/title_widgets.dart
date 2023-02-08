@@ -3,7 +3,7 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 
 class MyTitleWidgets {
-  static Widget simpleTitle(
+  static Widget titleWidget(
     String title, {
     int fontSize = 14,
     Color color = Colors.black,
