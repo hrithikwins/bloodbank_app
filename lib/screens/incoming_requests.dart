@@ -1,3 +1,6 @@
+import 'package:bloodbank_app/constants/button_theme.dart';
+import 'package:bloodbank_app/constants/colors.dart';
+import 'package:bloodbank_app/widgets/my_button.dart';
 import 'package:flutter/material.dart';
 
 class IncomingRequests extends StatelessWidget {
@@ -28,10 +31,12 @@ class IncomingRequests extends StatelessWidget {
                         ),
                         Column(
                           children: [
-                            // borderedButton(),
-                            Container(
-                              child: Text("Decline"),
-                            )
+                            ButtonThemes.redRoundedButton(
+                              "Accept",
+                              null,
+                            ),
+                            ButtonThemes.transparentRoundedButton(
+                                "Delete", null),
                           ],
                         ),
                       ],
@@ -43,12 +48,6 @@ class IncomingRequests extends StatelessWidget {
             )
             .toList(),
       ),
-    );
-  }
-
-  Container borderedButton(double height, double width, Color color) {
-    return Container(
-      child: Text("Accept"),
     );
   }
 }
