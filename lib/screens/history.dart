@@ -21,7 +21,7 @@ class History extends StatelessWidget {
           Expanded(
             child: SingleChildScrollView(
               child: Column(
-                children: ["Requester #3982", "Requester #893"]
+                children: ["Date 11/10/12", "Date 11/10/12"]
                     .map(
                       (e) => Column(
                         children: [
@@ -39,7 +39,8 @@ class History extends StatelessWidget {
                                     Container(
                                       child: MyTitleWidgets.titleWidget(
                                         e,
-                                        fontSize: 18,
+                                        fontSize: 12,
+                                        fontWeight: FontWeight.w400,
                                       ),
                                     ),
                                     MyTitleWidgets.titleWidget(
@@ -51,15 +52,18 @@ class History extends StatelessWidget {
                                 ),
                                 Column(
                                   children: [
-                                    ButtonThemes.redRoundedButton(
-                                      "Accept",
-                                      null,
+                                    Container(
+                                      child: MyTitleWidgets.titleWidget(
+                                        e,
+                                        fontSize: 12,
+                                        fontWeight: FontWeight.w400,
+                                      ),
                                     ),
-                                    SizedBox(
-                                      height: 8,
+                                    MyTitleWidgets.titleWidget(
+                                      e,
+                                      color: MyColors.redPrimary,
+                                      fontWeight: FontWeight.w400,
                                     ),
-                                    ButtonThemes.transparentRoundedButton(
-                                        "Delete", null),
                                   ],
                                 ),
                               ],
