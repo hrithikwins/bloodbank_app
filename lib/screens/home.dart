@@ -248,7 +248,7 @@ class _HomeState extends State<Home> {
                 Padding(
                   padding: const EdgeInsets.only(top: 19.0),
                   child: Text(
-                    "Hello World",
+                    "Your Blood Group",
                   ),
                 ),
                 Padding(

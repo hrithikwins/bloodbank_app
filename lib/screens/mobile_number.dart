@@ -35,13 +35,13 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   Future<void> _signInWithGoogle() async {
-    _auth.signInWithProvider(googleAuthProvider).then((UserCredential value) {
-      log("value is $value");
-      log(value.user!.email.toString());
-      log(value.user!.photoURL.toString());
-      log(value.user!.displayName.toString());
       Navigator.pushNamed(context, Routes.otpScreen);
-    });
+    // _auth.signInWithProvider(googleAuthProvider).then((UserCredential value) {
+    //   log("value is $value");
+    //   log(value.user!.email.toString());
+    //   log(value.user!.photoURL.toString());
+    //   log(value.user!.displayName.toString());
+    // });
   }
 
   @override
