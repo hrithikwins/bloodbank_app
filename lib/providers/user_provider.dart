@@ -10,7 +10,13 @@ class UserProvider extends ChangeNotifier {
 
   set userData(UserData? userData) {
     _userData = userData;
+    print("User Data: ${_userData!}");
     notifyListeners();
   }
 
+  // update the user data
+  void updateUserData({required String dataKey, required String dataValue}) {
+    _userData!.fullName = dataValue;
+    notifyListeners();
+  }
 }

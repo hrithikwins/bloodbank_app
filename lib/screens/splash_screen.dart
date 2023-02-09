@@ -2,7 +2,7 @@ import 'dart:developer';
 
 import 'package:bloodbank_app/constants/routes.dart';
 import 'package:bloodbank_app/constants/shared_prefs.dart';
-import 'package:bloodbank_app/providers/user_provder.dart';
+import 'package:bloodbank_app/providers/user_provider.dart';
 import 'package:bloodbank_app/screens/onboarding/onboarding0.dart';
 import 'package:bloodbank_app/screens/onboarding_screen.dart';
 import 'package:bloodbank_app/widgets/onboarding_widget.dart';

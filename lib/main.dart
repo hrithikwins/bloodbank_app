@@ -2,7 +2,7 @@
 
 import 'package:bloodbank_app/constants/colors.dart';
 import 'package:bloodbank_app/constants/routes.dart';
-import 'package:bloodbank_app/providers/user_provder.dart';
+import 'package:bloodbank_app/providers/user_provider.dart';
 import 'package:bloodbank_app/screens/all_messages.dart';
 import 'package:bloodbank_app/screens/donors_map.dart';
 import 'package:bloodbank_app/screens/find_donors.dart';
@@ -39,15 +39,15 @@ Future<void> main() async {
   //   FirebaseFirestore.instance.useFirestoreEmulator('localhost', 8080);
   // }
   runApp(
-    DevicePreview(
-      enabled: true,
-      tools: [
-        ...DevicePreview.defaultTools,
-        // const CustomPlugin(),
-      ],
-      builder: (context) => ChangeNotifierProvider(
-        create: (context) => UserProvider(),
-        child: const MyApp(),
+    ChangeNotifierProvider(
+      create: (context) => UserProvider(),
+      child: DevicePreview(
+        enabled: true,
+        tools: [
+          ...DevicePreview.defaultTools,
+          // const CustomPlugin(),
+        ],
+        builder: (context) => const MyApp(),
       ),
     ),
   );

@@ -8,7 +8,7 @@ import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../models/user_data.model.dart';
-import '../providers/user_provder.dart';
+import '../providers/user_provider.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
@@ -21,19 +21,15 @@ class _SignUpScreenState extends State<SignUpScreen> {
   final _formKey = GlobalKey<FormState>();
   final _scaffoldKey = GlobalKey<ScaffoldState>();
   late SharedPreferences prefs;
+
+  // Provider.of<UserProvider>(context, listen: false)
+  //     .userData;
   // FirebaseFirestore db = FirebaseFirestore.instance;
 
   Future<void> signUpTheUser() async {
     if (_formKey.currentState!.validate()) {
       print("Valid");
       _formKey.currentState!.save();
-      // prefs.setString(key, value)
-
-      // await createFirestoreData(
-      //   (prefs.getString(SharedPrefsConstant.name.toString()) ?? "No Name") +
-      //       DateTime.now().millisecondsSinceEpoch.toString(),
-      //   Provider.of<UserProvider>(context).userData,
-      // );
       _scaffoldKey.currentState?.showBottomSheet(
         (context) => Container(
           height: 100,
@@ -60,7 +56,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   //     isMerge: false,
   //   );
 
-  //   // Provider.of<UserProvider>(context).userData = UserData(age: );
+  //   // Provider.of<UserProvider>(context, listen: false).userData = UserData(age: );
   //   debugPrint(response.toString());
   // }
 
@@ -93,19 +89,35 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   children: [
                     textFieldWithLabel(
                       "Your Name",
-                      userDataFieldKey: SharedPrefsConstant.name,
+                      onSaved: (newValue) => {
+                        Provider.of<UserProvider>(context, listen: false)
+                            .userData!
+                            .fullName = newValue
+                      },
                     ),
                     textFieldWithLabel(
                       "Date of Birth",
-                      userDataFieldKey: SharedPrefsConstant.dateOfBirth,
+                      onSaved: (newValue) => {
+                        Provider.of<UserProvider>(context, listen: false)
+                            .userData!
+                            .fullName = newValue
+                      },
                     ),
-                    textFieldWithLabel(
-                      "Age",
-                      userDataFieldKey: SharedPrefsConstant.age,
-                    ),
+                    textFieldWithLabel("Age",
+                        onSaved: (newValue) => {
+                              Provider.of<UserProvider>(context, listen: false)
+                                  .userData!
+                                  .age = newValue
+                            }
+                        // userDataFieldKey: SharedPrefsConstant.age,
+                        ),
                     DropdownButtonFormField(
                       value: "none",
-                      onSaved: (newValue) => {},
+                      onSaved: (newValue) => {
+                        Provider.of<UserProvider>(context, listen: false)
+                            .userData
+                        // .prevailingHealthConditions = newValue.toString(),
+                      },
                       items: [
                         "diabetes",
                         "hypertension",
@@ -131,10 +143,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     //   "Prevailing Health Conditions",
                     //   userDataFieldKey: SharedPrefsConstant.healthConditions,
                     // ),
-                    textFieldWithLabel(
-                      "Blood Group",
-                      userDataFieldKey: SharedPrefsConstant.bloodGroup,
-                    ),
+                    textFieldWithLabel("Blood Group",
+                        onSaved: (newValue) => {
+                              Provider.of<UserProvider>(context, listen: false)
+                                  .userData!
+                                  .bloodGroup = newValue
+                            }
+                        // userDataFieldKey: SharedPrefsConstant.bloodGroup,
+                        ),
                     ElevatedButton(
                       onPressed: signUpTheUser,
                       child: const Text('Submit'),
@@ -157,7 +173,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
     );
   }
 
-  Widget textFieldWithLabel(String title, {required String userDataFieldKey}) {
+  Widget textFieldWithLabel(String title, {required Function(String) onSaved}) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Column(
@@ -176,10 +192,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 color: Colors.white,
               ),
             ),
-            onSaved: (newValue) => {
-
-              print(userDataFieldKey),
-            },
+            onSaved: (newValue) => onSaved,
             validator: (value) {
               if (value == null || value.isEmpty) {
                 return 'Please enter some text';

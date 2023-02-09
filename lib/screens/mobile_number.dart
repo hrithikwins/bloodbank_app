@@ -5,7 +5,7 @@ import 'dart:developer';
 import 'package:bloodbank_app/constants/colors.dart';
 import 'package:bloodbank_app/constants/routes.dart';
 import 'package:bloodbank_app/models/user_data.model.dart';
-import 'package:bloodbank_app/providers/user_provder.dart';
+import 'package:bloodbank_app/providers/user_provider.dart';
 import 'package:bloodbank_app/utils/utilities.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
