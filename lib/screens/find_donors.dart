@@ -1,7 +1,9 @@
 import 'package:bloodbank_app/constants/blood_groups.dart';
+import 'package:bloodbank_app/constants/colors.dart';
 import 'package:bloodbank_app/widgets/title_widgets.dart';
 import 'package:flutter/material.dart';
 
+import '../constants/button_theme.dart';
 import '../constants/routes.dart';
 
 class FindDonors extends StatelessWidget {
@@ -21,18 +23,31 @@ class FindDonors extends StatelessWidget {
       ),
       body: ListView(
         children: [
-          titleWithWidget(
-            "Patient Blood Type",
-            SizedBox(
-              height: 100,
-              width: double.infinity,
-              child: GridView.count(
-                crossAxisCount: 7,
-                children: bloodGroups
-                    .map((e) => Container(
-                          child: Text(e),
-                        ))
-                    .toList(),
+          Padding(
+            padding: const EdgeInsets.all(28.0),
+            child: titleWithWidget(
+              "Patient Blood Type",
+              Container(
+                margin: EdgeInsets.only(top: 18),
+                child: SizedBox(
+                  height: 100,
+                  width: double.infinity,
+                  child: Center(
+                    child: GridView.count(
+                      crossAxisCount: 7,
+                      mainAxisSpacing: 10,
+                      crossAxisSpacing: 10,
+                      children: bloodGroups
+                          .map(
+                            (e) => ButtonThemes.redRoundedButton(
+                              e,
+                              () => null,
+                            ),
+                          )
+                          .toList(),
+                    ),
+                  ),
+                ),
               ),
             ),
           ),
@@ -40,11 +55,13 @@ class FindDonors extends StatelessWidget {
             "Patient Gender",
             Row(
               children: [
-                Container(
-                  child: Text("Male"),
+                ButtonThemes.redRoundedButton(
+                  "Male",
+                  () => null,
                 ),
-                Container(
-                  child: Text("Female"),
+                ButtonThemes.redRoundedButton(
+                  "Female ",
+                  () => null,
                 ),
               ],
             ),
@@ -52,17 +69,14 @@ class FindDonors extends StatelessWidget {
           titleWithWidget(
               "Patient Relation",
               Row(
-                children: [
-                  Container(
-                    child: Text("Family"),
-                  ),
-                  Container(
-                    child: Text("Friend"),
-                  ),
-                  Container(
-                    child: Text("Other"),
-                  ),
-                ],
+                children: ["Family", "Friend", "Other"]
+                    .map(
+                      (e) => ButtonThemes.redRoundedButton(
+                        e,
+                        () => null,
+                      ),
+                    )
+                    .toList(),
               )),
           titleWithWidget(
             "Patient Age",

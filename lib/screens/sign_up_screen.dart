@@ -21,6 +21,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   final _formKey = GlobalKey<FormState>();
   final _scaffoldKey = GlobalKey<ScaffoldState>();
   late SharedPreferences prefs;
+  late UserData userData;
 
   // Provider.of<UserProvider>(context, listen: false)
   //     .userData;
@@ -69,6 +70,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
   // declaring a function so that the initState can call it without asynchrony
   void onInit() async {
+    userData = Provider.of<UserProvider>(context, listen: false).userData;
     prefs = await SharedPreferences.getInstance();
   }
 
@@ -119,8 +121,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       value: "none",
                       onSaved: (newValue) => {
                         Provider.of<UserProvider>(context, listen: false)
-                            .userData
-                            .prevailingHealthConditions = newValue.toString(),
+                            .userData = UserData(
+                          prevailingHealthConditions: newValue.toString(),
+                        ),
                       },
                       items: [
                         "diabetes",

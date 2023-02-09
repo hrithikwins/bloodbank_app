@@ -1,10 +1,13 @@
 import 'package:bloodbank_app/constants/colors.dart';
 import 'package:bloodbank_app/constants/routes.dart';
 import 'package:bloodbank_app/constants/shared_prefs.dart';
+import 'package:bloodbank_app/models/user_data.model.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../constants/images.dart';
+import '../providers/user_provider.dart';
 import '../utils/network.dart';
 
 class Home extends StatefulWidget {
@@ -16,10 +19,11 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
-  late SharedPreferences prefs;
+  // late SharedPreferences prefs;
   String? _bloodGroup;
   String? name;
-
+  String? prevailingHealthConditions;
+  late UserData userProviderData;
   @override
   void initState() {
     super.initState();
@@ -29,11 +33,16 @@ class _HomeState extends State<Home> {
   }
 
   void onInit() async {
-    prefs = await SharedPreferences.getInstance();
-    setState(() {
-      name = prefs.getString(SharedPrefsConstant.name);
-      _bloodGroup = prefs.getString(SharedPrefsConstant.bloodGroup.toString());
-    });
+    userProviderData =
+        await Provider.of<UserProvider>(context, listen: false).userData;
+    name = userProviderData.fullName;
+    _bloodGroup = userProviderData.bloodGroup;
+    prevailingHealthConditions = userProviderData.prevailingHealthConditions;
+    // prefs = await SharedPreferences.getInstance();
+    // setState(() {
+    //   name = prefs.getString(SharedPrefsConstant.name);
+    //   _bloodGroup = prefs.getString(SharedPrefsConstant.bloodGroup.toString());
+    // });
   }
 
   Future<void> getApiData() async {
@@ -211,16 +220,22 @@ class _HomeState extends State<Home> {
           padding: const EdgeInsets.all(8.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: const [
-              Text(
+            children: [
+              const Text(
                 "Donor Status",
               ),
-              Icon(
-                Icons.check_circle,
-                color: MyColors.greenLight,
-                size: 93.0,
-              ),
-              Text(
+              prevailingHealthConditions == "none"
+                  ? const Icon(
+                      Icons.check_circle,
+                      color: MyColors.greenLight,
+                      size: 93.0,
+                    )
+                  : const Icon(
+                      Icons.cancel,
+                      color: MyColors.redAccentLight,
+                      size: 93.0,
+                    ),
+              const Text(
                 "You can Donate!",
                 style: TextStyle(
                   color: Colors.blueGrey,
