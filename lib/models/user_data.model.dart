@@ -6,11 +6,11 @@ import 'dart:convert';
 
 class UserData {
   UserData({
-    this.fullName,
-    this.dateOfBirth,
-    this.age,
-    this.prevailingHealthConditions,
-    this.bloodGroup,
+    this.fullName = "",
+    this.dateOfBirth = "",
+    this.age = "",
+    this.prevailingHealthConditions = "",
+    this.bloodGroup = "",
   });
 
   String? fullName;

@@ -91,32 +91,36 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       "Your Name",
                       onSaved: (newValue) => {
                         Provider.of<UserProvider>(context, listen: false)
-                            .userData!
-                            .fullName = newValue
+                            .userData = UserData(
+                          fullName: newValue,
+                        )
                       },
                     ),
                     textFieldWithLabel(
                       "Date of Birth",
                       onSaved: (newValue) => {
                         Provider.of<UserProvider>(context, listen: false)
-                            .userData!
-                            .fullName = newValue
+                            .userData = UserData(
+                          dateOfBirth: newValue,
+                        )
                       },
                     ),
-                    textFieldWithLabel("Age",
-                        onSaved: (newValue) => {
-                              Provider.of<UserProvider>(context, listen: false)
-                                  .userData!
-                                  .age = newValue
-                            }
-                        // userDataFieldKey: SharedPrefsConstant.age,
-                        ),
+                    textFieldWithLabel(
+                      "Age",
+                      onSaved: (newValue) => {
+                        Provider.of<UserProvider>(context, listen: false)
+                            .userData = UserData(
+                          age: newValue,
+                        )
+                      },
+                      // userDataFieldKey: SharedPrefsConstant.age,
+                    ),
                     DropdownButtonFormField(
                       value: "none",
                       onSaved: (newValue) => {
                         Provider.of<UserProvider>(context, listen: false)
                             .userData
-                        // .prevailingHealthConditions = newValue.toString(),
+                            .prevailingHealthConditions = newValue.toString(),
                       },
                       items: [
                         "diabetes",
@@ -145,9 +149,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     // ),
                     textFieldWithLabel("Blood Group",
                         onSaved: (newValue) => {
+                              print("------------------------"),
                               Provider.of<UserProvider>(context, listen: false)
-                                  .userData!
-                                  .bloodGroup = newValue
+                                  .userData = UserData(
+                                bloodGroup: newValue,
+                              )
                             }
                         // userDataFieldKey: SharedPrefsConstant.bloodGroup,
                         ),
@@ -173,7 +179,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
     );
   }
 
-  Widget textFieldWithLabel(String title, {required Function(String) onSaved}) {
+  Widget textFieldWithLabel(String title, {required Function onSaved}) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Column(
@@ -192,7 +198,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 color: Colors.white,
               ),
             ),
-            onSaved: (newValue) => onSaved,
+            onSaved: (newValue) => onSaved(newValue),
             validator: (value) {
               if (value == null || value.isEmpty) {
                 return 'Please enter some text';
