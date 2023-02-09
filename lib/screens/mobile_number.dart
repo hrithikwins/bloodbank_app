@@ -32,6 +32,7 @@ class _LoginScreenState extends State<LoginScreen> {
   void initState() {
     super.initState();
     Utilities.logger.i("mobile_number.dart");
+
   }
 
   Future<void> _signInWithGoogle() async {

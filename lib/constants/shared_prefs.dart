@@ -4,6 +4,7 @@ class SharedPrefsConstant {
   // static SharedPreferences prefs =
   //     SharedPreferences.getInstance().then((value) => value);
 
+  static String userId = "userId";
   static String name = "name";
   static String dateOfBirth = "dateOfBirth";
   static String age = "age";

@@ -1,11 +1,16 @@
 import 'dart:developer';
 
 import 'package:bloodbank_app/constants/routes.dart';
+import 'package:bloodbank_app/constants/shared_prefs.dart';
+import 'package:bloodbank_app/providers/user_provder.dart';
 import 'package:bloodbank_app/screens/onboarding/onboarding0.dart';
 import 'package:bloodbank_app/screens/onboarding_screen.dart';
 import 'package:bloodbank_app/widgets/onboarding_widget.dart';
 import 'package:flutter/material.dart';
 import "dart:math" as math;
+
+import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 // import "dart:math";
 
 class SplashScreen extends StatefulWidget {
@@ -40,6 +45,22 @@ class _SplashScreenState extends State<SplashScreen>
               ),
             });
     super.initState();
+
+    // get the userId from localStorage
+    // if userId is null then navigate to onboarding screen
+    Future<String?> userId = SharedPreferences.getInstance().then(
+      (prefs) =>
+        prefs.getString(SharedPrefsConstant.userId),
+    ).catchError((onError)=> null);
+    if (userId != null || userId != "") {
+      Navigator.pushNamed(context, Routes.home);
+    } else {
+      Navigator.pushNamed(context, Routes.onboardingScreen);
+    }
+
+    // checking if the user is logged in or not
+    // Provider.of<UserProvider>(context, listen: false).userData ??
+    //     Navigator.pushNamed(context, Routes.onboardingScreen);
   }
 
   @override
