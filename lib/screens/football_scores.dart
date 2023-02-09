@@ -20,7 +20,7 @@ List<Map<String, dynamic>> footballScores = [
   },
   {
     "time": 2,
-    "team": "ENG",
+    "winner": "ENG",
   },
   {
     "time": 1,
@@ -28,14 +28,14 @@ List<Map<String, dynamic>> footballScores = [
   }
 ];
 
-List<String> data = [];
+List<Map<String, String>> data = [];
 // Timer to have a global count
 
 Stream<String> getDataFromStream() async* {
   data = [];
   for (var i = 0; i < footballScores.length; i++) {
     await Future.delayed(Duration(seconds: footballScores[i]["time"]));
-    yield footballScores[i]["team"].toString();
+    yield footballScores[i].toString();
   }
 }
 
@@ -54,9 +54,11 @@ class _FootballScoresState extends State<FootballScores> {
                 );
               } else if (snapshot.connectionState == ConnectionState.active ||
                   snapshot.connectionState == ConnectionState.done) {
-                data.add(snapshot.data.toString());
+                data.add(snapshot.data);
                 return Column(
-                  children: data.map((e) => Text(e)).toList(),
+                  children: data
+                      .map((e) => Text(e['team'] ?? "Tam doesn't exist"))
+                      .toList(),
                 );
               }
             } else {
