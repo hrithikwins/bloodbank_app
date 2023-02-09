@@ -4,6 +4,8 @@
         android:label="bloodbank_app"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
+          <meta-data android:name="com.google.android.geo.API_KEY"
+               android:value="AIzaSyBcsyv9L2qMDC8_IbRE2bL6bX8wBoqeSrE"/>
         <activity
             android:name=".MainActivity"
             android:exported="true"

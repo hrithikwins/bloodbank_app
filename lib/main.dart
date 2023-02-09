@@ -11,6 +11,7 @@ import 'package:bloodbank_app/screens/history.dart';
 import 'package:bloodbank_app/screens/home.dart';
 import 'package:bloodbank_app/screens/incoming_requests.dart';
 import 'package:bloodbank_app/screens/loading.dart';
+import 'package:bloodbank_app/screens/map_sample.dart';
 import 'package:bloodbank_app/screens/messages.dart';
 import 'package:bloodbank_app/screens/mobile_number.dart';
 import 'package:bloodbank_app/screens/onboarding/onboarding0.dart';
@@ -97,7 +98,7 @@ class MyApp extends StatelessWidget {
         // buttonTheme:
       ),
       // home: SplashScreen(),
-      initialRoute: Routes.signUpScreen,
+      initialRoute: Routes.mapPage,
       routes: {
         "/splash": (context) => SplashScreen(),
         Routes.onboardingScreen: (context) => OnboardingPage(),
@@ -115,6 +116,7 @@ class MyApp extends StatelessWidget {
         Routes.messages: (context) => Messages(),
         Routes.footballScores: (context) => FootballScores(),
         Routes.loading: (context) => LoadingScreen(),
+        Routes.mapPage: (context) => MapSample(),
       },
     );
   }

@@ -15,4 +15,5 @@ class Routes {
   static const String messages = '/messages';
   static const String footballScores = '/football';
   static const String loading = '/loading';
+  static const String mapPage = '/map-sample';
 }
