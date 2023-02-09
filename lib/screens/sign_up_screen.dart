@@ -4,7 +4,11 @@ import 'package:bloodbank_app/constants/shared_prefs.dart';
 import 'package:bloodbank_app/utils/firestore_utils.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+import '../models/user_data.model.dart';
+import '../providers/user_provder.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
@@ -19,13 +23,17 @@ class _SignUpScreenState extends State<SignUpScreen> {
   late SharedPreferences prefs;
   // FirebaseFirestore db = FirebaseFirestore.instance;
 
-  Future<void> addDataToSharedPrefs() async {
+  Future<void> signUpTheUser() async {
     if (_formKey.currentState!.validate()) {
       print("Valid");
       _formKey.currentState!.save();
       // prefs.setString(key, value)
 
-      await createFirestoreData();
+      // await createFirestoreData(
+      //   (prefs.getString(SharedPrefsConstant.name.toString()) ?? "No Name") +
+      //       DateTime.now().millisecondsSinceEpoch.toString(),
+      //   Provider.of<UserProvider>(context).userData,
+      // );
       _scaffoldKey.currentState?.showBottomSheet(
         (context) => Container(
           height: 100,
@@ -45,25 +53,16 @@ class _SignUpScreenState extends State<SignUpScreen> {
     }
   }
 
-  Future<void> createFirestoreData() async {
-    var response = FireStoreMethods.updateOrCreateFirestoreData(
-      (prefs.getString(SharedPrefsConstant.name.toString()) ?? "No Name") +
-          DateTime.now().millisecondsSinceEpoch.toString(),
-      "users",
-      {
-        "name": prefs.getString(SharedPrefsConstant.name.toString()),
-        "dateOfBirth":
-            prefs.getString(SharedPrefsConstant.dateOfBirth.toString()),
-        "age": prefs.getString(SharedPrefsConstant.age.toString()),
-        "healthConditions":
-            prefs.getString(SharedPrefsConstant.healthConditions.toString()),
-        "bloodGroup":
-            prefs.getString(SharedPrefsConstant.bloodGroup.toString()),
-      },
-      isMerge: false,
-    );
-    debugPrint(response.toString());
-  }
+  // Future<void> createFirestoreData(documentId, data) async {
+  //   var response = FireStoreMethods.updateOrCreateFirestoreData(
+  //    documentId,
+  //     "users", data,
+  //     isMerge: false,
+  //   );
+
+  //   // Provider.of<UserProvider>(context).userData = UserData(age: );
+  //   debugPrint(response.toString());
+  // }
 
   @override
   void initState() {
@@ -81,49 +80,75 @@ class _SignUpScreenState extends State<SignUpScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: _scaffoldKey,
-      body: SafeArea(
-        child: SingleChildScrollView(
-          child: Container(
-            height: MediaQuery.of(context).size.height -
-                MediaQuery.of(context).padding.top,
-            color: MyColors.redPrimary,
-            child: Form(
-              key: _formKey,
-              child: Column(
-                children: [
-                  textFieldWithLabel(
-                    "Your Name",
-                    userDataFieldKey: SharedPrefsConstant.name,
-                  ),
-                  textFieldWithLabel(
-                    "Date of Birth",
-                    userDataFieldKey: SharedPrefsConstant.dateOfBirth,
-                  ),
-                  textFieldWithLabel(
-                    "Age",
-                    userDataFieldKey: SharedPrefsConstant.age,
-                  ),
-                  textFieldWithLabel(
-                    "Prevailing Health Conditions",
-                    userDataFieldKey: SharedPrefsConstant.healthConditions,
-                  ),
-                  textFieldWithLabel(
-                    "Blood Group",
-                    userDataFieldKey: SharedPrefsConstant.bloodGroup,
-                  ),
-                  ElevatedButton(
-                    onPressed: addDataToSharedPrefs,
-                    child: const Text('Submit'),
-                  )
-                  // ElevatedButton(
-                  //   onPressed: addDataToFirestore,
-                  //   child: const Text('Add to Firestore'),
-                  // ),
-                  // ElevatedButton(
-                  //   onPressed: readDataFromFirestore,
-                  //   child: const Text('REad from Firestore'),
-                  // ),
-                ],
+      body: Container(
+        color: MyColors.redPrimary,
+        child: SafeArea(
+          child: SingleChildScrollView(
+            child: Container(
+              height: MediaQuery.of(context).size.height -
+                  MediaQuery.of(context).padding.top,
+              child: Form(
+                key: _formKey,
+                child: Column(
+                  children: [
+                    textFieldWithLabel(
+                      "Your Name",
+                      userDataFieldKey: SharedPrefsConstant.name,
+                    ),
+                    textFieldWithLabel(
+                      "Date of Birth",
+                      userDataFieldKey: SharedPrefsConstant.dateOfBirth,
+                    ),
+                    textFieldWithLabel(
+                      "Age",
+                      userDataFieldKey: SharedPrefsConstant.age,
+                    ),
+                    DropdownButtonFormField(
+                      value: "none",
+                      onSaved: (newValue) => {},
+                      items: [
+                        "diabetes",
+                        "hypertension",
+                        "heartDisease",
+                        "none",
+                      ]
+                          .map((e) => DropdownMenuItem(
+                                child: Container(
+                                  color: MyColors.redPrimary,
+                                  child: Text(
+                                    e.toString(),
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                ),
+                                value: e.toString(),
+                              ))
+                          .toList(),
+                      onChanged: (value) {},
+                    ),
+                    // textFieldWithLabel(
+                    //   "Prevailing Health Conditions",
+                    //   userDataFieldKey: SharedPrefsConstant.healthConditions,
+                    // ),
+                    textFieldWithLabel(
+                      "Blood Group",
+                      userDataFieldKey: SharedPrefsConstant.bloodGroup,
+                    ),
+                    ElevatedButton(
+                      onPressed: signUpTheUser,
+                      child: const Text('Submit'),
+                    )
+                    // ElevatedButton(
+                    //   onPressed: addDataToFirestore,
+                    //   child: const Text('Add to Firestore'),
+                    // ),
+                    // ElevatedButton(
+                    //   onPressed: readDataFromFirestore,
+                    //   child: const Text('REad from Firestore'),
+                    // ),
+                  ],
+                ),
               ),
             ),
           ),
@@ -152,12 +177,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
               ),
             ),
             onSaved: (newValue) => {
-              newValue != null && newValue.isNotEmpty
-                  ? prefs.setString(
-                      userDataFieldKey,
-                      newValue,
-                    )
-                  : prefs.setString(userDataFieldKey, ""),
+
               print(userDataFieldKey),
             },
             validator: (value) {

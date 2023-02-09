@@ -4,9 +4,12 @@ import 'dart:developer';
 
 import 'package:bloodbank_app/constants/colors.dart';
 import 'package:bloodbank_app/constants/routes.dart';
+import 'package:bloodbank_app/models/user_data.model.dart';
+import 'package:bloodbank_app/providers/user_provder.dart';
 import 'package:bloodbank_app/utils/utilities.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -32,17 +35,16 @@ class _LoginScreenState extends State<LoginScreen> {
   void initState() {
     super.initState();
     Utilities.logger.i("mobile_number.dart");
-
   }
 
   Future<void> _signInWithGoogle() async {
-      Navigator.pushNamed(context, Routes.otpScreen);
-    // _auth.signInWithProvider(googleAuthProvider).then((UserCredential value) {
-    //   log("value is $value");
-    //   log(value.user!.email.toString());
-    //   log(value.user!.photoURL.toString());
-    //   log(value.user!.displayName.toString());
-    // });
+    Navigator.pushNamed(context, Routes.otpScreen);
+    _auth.signInWithProvider(googleAuthProvider).then((UserCredential value) {
+      log("value is $value");
+      // log(value.user!.email.toString());
+      // log(value.user!.photoURL.toString());
+      // log(value.user!.displayName.toString());
+    });
   }
 
   @override
