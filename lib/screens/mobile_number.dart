@@ -6,6 +6,7 @@ import 'package:bloodbank_app/constants/colors.dart';
 import 'package:bloodbank_app/constants/routes.dart';
 import 'package:bloodbank_app/models/user_data.model.dart';
 import 'package:bloodbank_app/providers/user_provider.dart';
+import 'package:bloodbank_app/utils/firestore_utils.dart';
 import 'package:bloodbank_app/utils/utilities.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -38,13 +39,19 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   Future<void> _signInWithGoogle() async {
-    Navigator.pushNamed(context, Routes.otpScreen);
-    _auth.signInWithProvider(googleAuthProvider).then((UserCredential value) {
-      log("value is $value");
-      // log(value.user!.email.toString());
-      // log(value.user!.photoURL.toString());
-      // log(value.user!.displayName.toString());
+    UserCredential value = await _auth.signInWithProvider(googleAuthProvider);
+    await FireStoreMethods.updateOrCreateFirestoreData(
+        value.user!.email!, "user", {
+      "email": value.user!.email,
+      "name": value.user!.displayName,
+      "photoUrl": value.user!.photoURL,
     });
+    Navigator.pushNamed(context, Routes.allMessages);
+    log("value is $value");
+    // log(value.user!.email.toString());
+    // log(value.user!.photoURL.toString());
+    // log(value.user!.displayName.toString());
+    // });
   }
 
   @override
