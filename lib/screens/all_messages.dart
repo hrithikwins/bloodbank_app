@@ -1,3 +1,4 @@
+import 'package:bloodbank_app/utils/firestore_utils.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
@@ -13,16 +14,21 @@ class AllMessages extends StatefulWidget {
 @override
 initState() {
   // super.initState();
-  _getMessages();
+  _getUsers();
 }
 
-Stream _getMessages() async* {
-  final db = FirebaseFirestore.instance;
-  final docRef = db.collection("messages").doc("javaoncloud14@gmail.com");
-  docRef.snapshots().listen(
-        (event) => print("current data: ${event.data()}"),
-        onError: (error) => print("Listen failed: $error"),
-      );
+Future<List<String>> _getUsers() async {
+  final db = await FireStoreMethods.getDataFromFirestore(
+    "messages",
+  );
+  print("messages are ");
+  List<String> allUsers = [];
+  db.forEach((data) => {
+        allUsers.add(data.keys.toList()[0]),
+        print(data.keys),
+      });
+  print(allUsers);
+  return allUsers;
 }
 
 class _AllMessagesState extends State<AllMessages> {
@@ -41,54 +47,73 @@ class _AllMessagesState extends State<AllMessages> {
               child: Padding(
                 padding:
                     const EdgeInsets.symmetric(vertical: 4.0, horizontal: 8),
-                child: StreamBuilder(
-                    stream: _getMessages(),
-                    builder: (context, snapshot) {
-                      return Column(
-                        children: ["Donor #3982", "Donor #893"]
-                            .map(
-                              (e) => Column(
-                                children: [
-                                  Container(
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Container(
-                                              child: Text(e),
-                                            ),
-                                            Container(
-                                              child: Text(
-                                                "Hello, I am available",
+                child: FutureBuilder(
+                  future: _getUsers(),
+                  builder: (context, snapshot) {
+                    if (snapshot.hasData) {
+                      if (snapshot.connectionState == ConnectionState.waiting) {
+                        return Center(
+                          child: CircularProgressIndicator(),
+                        );
+                      } else if (snapshot.connectionState ==
+                              ConnectionState.active ||
+                          snapshot.connectionState == ConnectionState.done) {
+                        // data.add(snapshot.data);
+                        return Column(
+                          children: snapshot.data!
+                              .map(
+                                (e) => Column(
+                                  children: [
+                                    Container(
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Container(
+                                                child: Text(e),
                                               ),
-                                            )
-                                          ],
-                                        ),
-                                        IconButton(
-                                          icon: Icon(
-                                            Icons.keyboard_arrow_right_sharp,
+                                              Container(
+                                                child: Text(
+                                                  "Hello, I am available",
+                                                ),
+                                              )
+                                            ],
                                           ),
-                                          onPressed: () {
-                                            Navigator.pushNamed(
-                                              context,
-                                              Routes.messages,
-                                            );
-                                          },
-                                        ),
-                                      ],
+                                          IconButton(
+                                            icon: Icon(
+                                              Icons.keyboard_arrow_right_sharp,
+                                            ),
+                                            onPressed: () {
+                                              Navigator.pushNamed(
+                                                context,
+                                                Routes.messages,
+                                              );
+                                            },
+                                          ),
+                                        ],
+                                      ),
                                     ),
-                                  ),
-                                  Divider(),
-                                ],
-                              ),
-                            )
-                            .toList(),
+                                    Divider(),
+                                  ],
+                                ),
+                              )
+                              .toList(),
+                        );
+                      }
+                    } else {
+                      return Container(
+                        child: Center(
+                          child: Text("No Data"),
+                        ),
                       );
-                    }),
+                    }
+                    return Container();
+                  },
+                ),
               ),
             ),
           ),

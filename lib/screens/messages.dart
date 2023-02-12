@@ -1,8 +1,40 @@
 import 'package:bloodbank_app/constants/colors.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
-class Messages extends StatelessWidget {
+class Messages extends StatefulWidget {
   const Messages({super.key});
+
+  @override
+  State<Messages> createState() => _MessagesState();
+}
+
+class _MessagesState extends State<Messages> {
+  @override
+  initState() {
+    // super.initState();
+    _getMessages();
+  }
+
+  List<dynamic> myMessages = [];
+
+  Stream<List<dynamic>> _getMessages() async* {
+    List<dynamic> messages = [];
+    final db = FirebaseFirestore.instance;
+    final docRef = db.collection("messages").doc("javaoncloud14@gmail.com");
+    docRef.snapshots().listen(
+          (event) => {
+            messages.add(event.data()!["hrithik"]),
+            print("current data: ${event.data()!["hrithik"]}"),
+            setState(() {
+              myMessages = messages;
+            })
+          },
+          onError: (error) => print("Listen failed: $error"),
+        );
+    print("outside the listen");
+    yield messages;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -48,16 +80,20 @@ class Messages extends StatelessWidget {
           ),
           Expanded(
             child: SingleChildScrollView(
-              child: Column(
-                children: ["hi,", "hello", "whatspu", "send blood", "Please"]
-                    .map((e) => Container(
-                          padding: EdgeInsets.only(
-                            top: 200,
-                          ),
-                          child: Text(e),
-                        ))
-                    .toList(),
-              ),
+              child: StreamBuilder<List<dynamic>>(
+                  stream: _getMessages(),
+                  builder: (context, snapshot) {
+                    return Column(
+                      children: myMessages
+                          .map((e) => Container(
+                                padding: EdgeInsets.only(
+                                  top: 200,
+                                ),
+                                child: Text(e.toString()),
+                              ))
+                          .toList(),
+                    );
+                  }),
             ),
           ),
           Container(

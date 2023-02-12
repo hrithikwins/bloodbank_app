@@ -39,6 +39,22 @@ class FireStoreMethods {
     );
   }
 
+  static Future<dynamic> getDataFromFirestore(String collectionName) async {
+    List<dynamic> data = [];
+    await db.collection(collectionName).get().then(
+      //GET METHOD
+
+      (QuerySnapshot querySnapshot) {
+        querySnapshot.docs.forEach((doc) {
+          print(doc.data());
+          data.add(doc.data());
+          // return doc.data();
+        });
+      },
+    );
+    return data;
+  }
+
   static Future<void> updateOrCreateFirestoreData(
       String id, String collectionName, Map<String, dynamic> data,
       {bool isMerge = false}) async {
