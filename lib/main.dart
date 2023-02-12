@@ -98,7 +98,7 @@ class MyApp extends StatelessWidget {
         // buttonTheme:
       ),
       // home: SplashScreen(),
-      initialRoute: Routes.loginScreen,
+      initialRoute: Routes.allMessages,
       routes: {
         "/splash": (context) => SplashScreen(),
         Routes.onboardingScreen: (context) => OnboardingPage(),

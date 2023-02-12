@@ -1,0 +1,13 @@
+[
+  {
+    "javaoncloud14@gmail.com": [
+      { "message": "Hello", "isSender": true },
+      { "message": "Hello", "isSender": true },
+      { "message": "Hii how are you", "isSender": false },
+      { "message": "Hello", "isSender": true },
+      { "message": "Say something", "isSender": false },
+      { "message": "Hello", "isSender": true },
+      { "message": "Hello", "isSender": true }
+    ]
+  }
+]

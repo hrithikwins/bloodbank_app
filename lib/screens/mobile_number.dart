@@ -46,7 +46,7 @@ class _LoginScreenState extends State<LoginScreen> {
       "name": value.user!.displayName,
       "photoUrl": value.user!.photoURL,
     });
-    Navigator.pushNamed(context, Routes.allMessages);
+    // Navigator.pushNamed(context, Routes.allMessages);
     log("value is $value");
     // log(value.user!.email.toString());
     // log(value.user!.photoURL.toString());
